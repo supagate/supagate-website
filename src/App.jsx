@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import TrustBar from './components/TrustBar'
@@ -22,6 +23,7 @@ export default function App() {
       <Testimonials />
       <CtaSection />
       <Footer />
+      <SpeedInsights />
     </>
   )
 }
