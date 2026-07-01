@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "6WX8UFH5Z8.co.supagate.supagate",
+        "paths": ["/accept-invite/*", "/join/*", "NOT /admin/*"]
+      }
+    ]
+  }
+}
