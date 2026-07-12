@@ -13,7 +13,7 @@ const cols = [
   {
     heading: 'Company',
     links: [
-      { href: '#', label: 'About Us' },
+      { href: '/about.html', label: 'About Us' },
     ],
   },
   {

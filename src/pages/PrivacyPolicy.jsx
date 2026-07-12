@@ -1,4 +1,4 @@
-import LogoGreen from '../components/LogoGreen'
+import PageHeader from '../components/PageHeader'
 import Footer from '../components/Footer'
 import styles from './Legal.module.css'
 
@@ -7,13 +7,7 @@ const EFFECTIVE_DATE = 'July 12, 2026'
 export default function PrivacyPolicy() {
   return (
     <>
-      <header className={styles.header}>
-        <a href="/" className={styles.logo}>
-          <LogoGreen />
-          <span>Supagate</span>
-        </a>
-        <a href="/" className={styles.back}>← Back to home</a>
-      </header>
+      <PageHeader />
 
       <main className={styles.doc}>
         <h1>Privacy Policy</h1>
