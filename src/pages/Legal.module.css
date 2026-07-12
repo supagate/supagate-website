@@ -1,0 +1,74 @@
+.doc {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 120px 5% 96px;
+}
+
+.doc h1 {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--title);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.updated {
+  color: var(--sub);
+  font-size: 0.92rem;
+  margin-bottom: 40px;
+}
+
+.doc h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--title);
+  margin: 40px 0 14px;
+}
+
+.doc h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 24px 0 8px;
+}
+
+.doc p {
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.doc ul {
+  margin: 0 0 14px 20px;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.doc li { margin-bottom: 6px; }
+
+.doc a { color: var(--primary); }
+
+.doc strong { color: var(--title); }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 20px;
+  font-size: 0.92rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid #EAEDF2;
+  vertical-align: top;
+}
+
+.table th {
+  background: var(--bg);
+  color: var(--title);
+  font-weight: 700;
+}

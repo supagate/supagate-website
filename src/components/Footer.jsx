@@ -7,29 +7,19 @@ const cols = [
     links: [
       { href: '#features',     label: 'Features' },
       { href: '#how-it-works', label: 'How It Works' },
-      { href: '#',             label: 'Pricing' },
-      { href: '#',             label: 'Changelog' },
-      { href: '#',             label: 'Roadmap' },
+      // { href: '#',             label: 'Pricing' },
     ],
   },
   {
     heading: 'Company',
     links: [
-      { href: '#', label: 'About Us' },
-      { href: '#', label: 'Blog' },
-      { href: '#', label: 'Careers' },
-      { href: '#', label: 'Press Kit' },
-      { href: '#contact', label: 'Contact' },
+      { href: '/about.html', label: 'About Us' },
     ],
   },
   {
     heading: 'Support',
     links: [
-      { href: '#', label: 'Help Centre' },
-      { href: '#', label: 'Documentation' },
-      { href: '#', label: 'Community' },
-      { href: '#', label: 'System Status' },
-      { href: 'mailto:hello@supagate.ng', label: 'hello@supagate.ng' },
+      { href: 'mailto:hello@supagate.co', label: 'hello@supagate.co' },
     ],
   },
 ]
@@ -73,9 +63,9 @@ export default function Footer() {
       <div className={styles.bottom}>
         <p>© 2026 Supagate Technologies Ltd. All rights reserved.</p>
         <div className={styles.bottomLinks}>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/privacy-policy.html#cookies">Cookie Policy</a>
         </div>
       </div>
     </footer>
