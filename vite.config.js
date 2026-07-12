@@ -13,6 +13,8 @@ export default defineConfig({
         terms: resolve(__dirname, 'terms.html'),
         about: resolve(__dirname, 'about.html'),
         deleteAccount: resolve(__dirname, 'delete-account.html'),
+        acceptInvite: resolve(__dirname, 'accept-invite.html'),
+        join: resolve(__dirname, 'join.html'),
       },
     },
   },
