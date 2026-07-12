@@ -3,11 +3,12 @@ import LogoGreen from './LogoGreen'
 import styles from './Nav.module.css'
 
 const links = [
-  { href: '#features', label: 'Features' },
-  { href: '#how-it-works', label: 'How It Works' },
-  { href: '#who', label: 'Who It\'s For' },
-  { href: '#testimonials', label: 'Reviews' },
-  { href: '#contact', label: 'Contact' },
+  { hash: 'features', label: 'Features' },
+  { hash: 'how-it-works', label: 'How It Works' },
+  { hash: 'who', label: 'Who It\'s For' },
+  { hash: 'testimonials', label: 'Reviews' },
+  { href: '/about.html', label: 'About Us' },
+  { hash: 'contact', label: 'Contact' },
 ]
 
 export default function Nav() {
@@ -27,30 +28,52 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Hash links (Features, Contact, etc.) jump to the section in place when
+  // it exists on the current page; otherwise they navigate home and land
+  // on it there — so the same links work from any page, not just "/".
+  const goToHash = (e, hash) => {
+    setOpen(false)
+    if (document.getElementById(hash)) return
+    e.preventDefault()
+    window.location.href = `/#${hash}`
+  }
+
+  const isAboutPage = window.location.pathname.startsWith('/about')
+
   return (
     <nav className={styles.nav}>
-      <a href="#home" className={styles.logo}>
+      <a href="#home" className={styles.logo} onClick={e => goToHash(e, 'home')}>
         <LogoGreen />
         <span>Supagate</span>
       </a>
 
       <ul className={`${styles.links} ${open ? styles.linksOpen : ''}`}>
         {links.map(l => (
-          <li key={l.href}>
-            <a
-              href={l.href}
-              className={active === l.href.slice(1) ? styles.linkActive : ''}
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </a>
+          <li key={l.hash ?? l.href}>
+            {l.href ? (
+              <a
+                href={l.href}
+                className={isAboutPage ? styles.linkActive : ''}
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </a>
+            ) : (
+              <a
+                href={`#${l.hash}`}
+                className={active === l.hash ? styles.linkActive : ''}
+                onClick={e => goToHash(e, l.hash)}
+              >
+                {l.label}
+              </a>
+            )}
           </li>
         ))}
       </ul>
 
       <div className={styles.cta}>
-        <a href="#contact" className="btn btn-outline">Contact Us</a>
-        <a href="#cta" className="btn btn-primary">Get the App</a>
+        <a href="#contact" className="btn btn-outline" onClick={e => goToHash(e, 'contact')}>Contact Us</a>
+        <a href="#cta" className="btn btn-primary" onClick={e => goToHash(e, 'cta')}>Get the App</a>
       </div>
 
       <button

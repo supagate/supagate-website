@@ -1,4 +1,4 @@
-import PageHeader from '../components/PageHeader'
+import Nav from '../components/Nav'
 import Stats from '../components/Stats'
 import CtaSection from '../components/CtaSection'
 import Footer from '../components/Footer'
@@ -50,7 +50,7 @@ export default function AboutUs() {
 
   return (
     <>
-      <PageHeader />
+      <Nav />
 
       <section className={styles.intro}>
         <div ref={introRef} className="section-header-center aos">

@@ -1,4 +1,4 @@
-import PageHeader from '../components/PageHeader'
+import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import styles from './Legal.module.css'
 
@@ -7,7 +7,7 @@ const EFFECTIVE_DATE = 'July 12, 2026'
 export default function Terms() {
   return (
     <>
-      <PageHeader />
+      <Nav />
 
       <main className={styles.doc}>
         <h1>Terms of Service</h1>
