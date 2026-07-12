@@ -52,7 +52,7 @@ export default function DeleteAccount() {
         <p>
           A limited amount of information is kept even after deletion,
           consistent with our{' '}
-          <a href="/privacy-policy.html">Privacy Policy</a>:
+          <a href="/privacy-policy">Privacy Policy</a>:
         </p>
         <ul>
           <li>

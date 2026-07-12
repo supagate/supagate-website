@@ -13,14 +13,14 @@ const cols = [
   {
     heading: 'Company',
     links: [
-      { href: '/about.html', label: 'About Us' },
+      { href: '/about', label: 'About Us' },
     ],
   },
   {
     heading: 'Support',
     links: [
       { href: 'mailto:hello@supagate.co', label: 'hello@supagate.co' },
-      { href: '/delete-account.html', label: 'Delete Account' },
+      { href: '/delete-account', label: 'Delete Account' },
     ],
   },
 ]
@@ -64,9 +64,9 @@ export default function Footer() {
       <div className={styles.bottom}>
         <p>© 2026 Supagate Technologies Ltd. All rights reserved.</p>
         <div className={styles.bottomLinks}>
-          <a href="/privacy-policy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms of Service</a>
-          <a href="/privacy-policy.html#cookies">Cookie Policy</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/privacy-policy#cookies">Cookie Policy</a>
         </div>
       </div>
     </footer>

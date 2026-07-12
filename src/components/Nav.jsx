@@ -7,7 +7,7 @@ const links = [
   { hash: 'how-it-works', label: 'How It Works' },
   { hash: 'who', label: 'Who It\'s For' },
   { hash: 'testimonials', label: 'Reviews' },
-  { href: '/about.html', label: 'About Us' },
+  { href: '/about', label: 'About Us' },
   { hash: 'contact', label: 'Contact' },
 ]
 

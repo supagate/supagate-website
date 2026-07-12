@@ -132,7 +132,7 @@ export default function PrivacyPolicy() {
         <p>Depending on your location, you may have the right to:</p>
         <ul>
           <li>Access, correct, or request a copy of your personal information.</li>
-          <li>Request deletion of your account and associated personal information — see our <a href="/delete-account.html">account deletion instructions</a>.</li>
+          <li>Request deletion of your account and associated personal information — see our <a href="/delete-account">account deletion instructions</a>.</li>
           <li>Object to or restrict certain processing.</li>
           <li>Withdraw consent where processing is based on consent (e.g. contacts access).</li>
         </ul>
