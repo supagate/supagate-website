@@ -133,86 +133,40 @@
   box-shadow: 0 40px 80px rgba(4,40,23,0.35), 0 0 0 1px rgba(255,255,255,0.08) inset;
   position: relative; z-index: 2;
 }
+.notch {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3a5a6a, #060a0c 75%);
+  z-index: 3;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.35);
+}
 .phoneScreen {
   width: 100%; height: 100%;
   background: var(--bg);
   border-radius: 30px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
-.statusBar {
-  background: var(--primary);
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+/* Source is a real 1080x2340 device screenshot of the Home screen. Scaled
+   and offset so the visible window is exactly the app content between the
+   OS status bar and the OS nav bar (see the same crop math used for the
+   Play Store marketing screenshots) — a slight horizontal overflow is
+   clipped by .phoneScreen's overflow:hidden, which reads as a barely
+   noticeable zoom rather than letterboxing. */
+.screenImg {
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 273px;
+  height: auto;
+  display: block;
 }
-.statusBar span { color: white; font-size: 0.65rem; font-weight: 600; }
-
-.phoneContent {
-  padding: 16px 14px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  overflow: hidden;
-}
-.greeting { font-size: 0.72rem; color: var(--sub); }
-.greeting strong { display: block; font-size: 0.9rem; color: var(--title); font-weight: 700; }
-
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-.cardHeader span { font-size: 0.68rem; font-weight: 600; color: var(--title); }
-.cardHeader small { font-size: 0.6rem; color: var(--primary); font-weight: 600; }
-
-.visitorRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-.visitorRow:last-child { border-bottom: none; }
-.avatar {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.6rem; font-weight: 700; color: white; flex-shrink: 0;
-}
-.visitorInfo { flex: 1; }
-.visitorInfo p { font-size: 0.62rem; font-weight: 600; color: var(--title); margin: 0; }
-.visitorInfo small { font-size: 0.56rem; color: var(--sub); }
-.badge { font-size: 0.55rem; font-weight: 600; padding: 2px 7px; border-radius: 50px; }
-.badgeIn      { background: #e8f7ef; color: var(--primary); }
-.badgeOut     { background: #feeaea; color: #de1135; }
-.badgePending { background: #fff6d9; color: #b45309; }
-
-.quickLabel { font-size: 0.65rem; font-weight: 700; color: var(--title); }
-.quickGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-.quickItem {
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-}
-.quickIcon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-.quickItem p { font-size: 0.6rem; font-weight: 600; color: var(--title); margin: 0; }
-.quickItem small { font-size: 0.56rem; color: var(--sub); }
 
 @media (max-width: 1024px) {
   .floatLeft, .floatRight { display: none; }

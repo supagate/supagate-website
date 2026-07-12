@@ -1,19 +1,6 @@
 import StoreButton from './StoreButton'
 import styles from './Hero.module.css'
 
-const visitors = [
-  { initials: 'JA', bg: '#009444', name: 'James Adeyemi',  detail: 'Block C, House 4 · 09:15am', badge: 'IN',      badgeClass: styles.badgeIn },
-  { initials: 'FM', bg: '#23365D', name: 'Fatima Musa',    detail: 'Block A, House 12 · 08:47am', badge: 'Pending', badgeClass: styles.badgePending },
-  { initials: 'OK', bg: '#4DCA90', name: 'Oluwaseun Kalu', detail: 'Block B, House 7 · 08:30am',  badge: 'OUT',     badgeClass: styles.badgeOut },
-]
-
-const quickActions = [
-  { icon: '🏃', label: 'Visitors',  sub: '12 today',    bg: '#e8f7ef' },
-  { icon: '💳', label: 'Pay Dues',  sub: 'Due: Jun 30', bg: '#e8f0ff' },
-  { icon: '🏊', label: 'Book Pool', sub: '3 slots left', bg: '#fff6d9' },
-  { icon: '📢', label: 'Notices',   sub: '2 new',        bg: '#fef3c7' },
-]
-
 const stats = [
   { value: '500+',  label: 'Estates Onboarded' },
   { value: '20K+',  label: 'Active Residents' },
@@ -67,47 +54,13 @@ export default function Hero() {
         </div>
 
         <div className={styles.phoneFrame}>
+          <div className={styles.notch} />
           <div className={styles.phoneScreen}>
-            <div className={styles.statusBar}>
-              <span>9:41</span>
-              <span>Supagate</span>
-              <span>●●●</span>
-            </div>
-
-            <div className={styles.phoneContent}>
-              <div className={styles.greeting}>
-                Good morning 👋
-                <strong>Lekki Gardens Estate</strong>
-              </div>
-
-              <div className={styles.card}>
-                <div className={styles.cardHeader}>
-                  <span>Recent Visitors</span>
-                  <small>View all →</small>
-                </div>
-                {visitors.map(v => (
-                  <div key={v.name} className={styles.visitorRow}>
-                    <div className={styles.avatar} style={{ background: v.bg }}>{v.initials}</div>
-                    <div className={styles.visitorInfo}>
-                      <p>{v.name}</p>
-                      <small>{v.detail}</small>
-                    </div>
-                    <span className={`${styles.badge} ${v.badgeClass}`}>{v.badge}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles.quickLabel}>Quick Actions</div>
-              <div className={styles.quickGrid}>
-                {quickActions.map(q => (
-                  <div key={q.label} className={styles.quickItem}>
-                    <div className={styles.quickIcon} style={{ background: q.bg }}>{q.icon}</div>
-                    <p>{q.label}</p>
-                    <small>{q.sub}</small>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <img
+              src="/play-screenshots/01-home.png"
+              alt="Supagate estate dashboard"
+              className={styles.screenImg}
+            />
           </div>
         </div>
 
