@@ -39,7 +39,8 @@
   margin-bottom: 14px;
 }
 
-.doc ul {
+.doc ul,
+.doc ol {
   margin: 0 0 14px 20px;
   color: var(--text);
   font-size: 0.98rem;
