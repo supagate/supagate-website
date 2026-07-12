@@ -12,6 +12,7 @@ export default defineConfig({
         privacyPolicy: resolve(__dirname, 'privacy-policy.html'),
         terms: resolve(__dirname, 'terms.html'),
         about: resolve(__dirname, 'about.html'),
+        deleteAccount: resolve(__dirname, 'delete-account.html'),
       },
     },
   },

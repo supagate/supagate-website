@@ -20,6 +20,7 @@ const cols = [
     heading: 'Support',
     links: [
       { href: 'mailto:hello@supagate.co', label: 'hello@supagate.co' },
+      { href: '/delete-account.html', label: 'Delete Account' },
     ],
   },
 ]
