@@ -53,14 +53,33 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className={styles.phoneFrame}>
-          <div className={styles.notch} />
-          <div className={styles.phoneScreen}>
-            <img
-              src="/play-screenshots/01-home.png"
-              alt="Supagate estate dashboard"
-              className={styles.screenImg}
-            />
+        <div className={styles.phoneStack}>
+          <div className={`${styles.phoneFrame} ${styles.phoneBack}`}>
+            <div className={styles.btnPower} />
+            <div className={styles.btnVolUp} />
+            <div className={styles.btnVolDn} />
+            <div className={styles.notch} />
+            <div className={styles.phoneScreen}>
+              <img
+                src="/play-screenshots/07-security-inout.png"
+                alt="Supagate gate in-out log"
+                className={styles.screenImg}
+              />
+            </div>
+          </div>
+
+          <div className={`${styles.phoneFrame} ${styles.phoneFront}`}>
+            <div className={styles.btnPower} />
+            <div className={styles.btnVolUp} />
+            <div className={styles.btnVolDn} />
+            <div className={styles.notch} />
+            <div className={styles.phoneScreen}>
+              <img
+                src="/play-screenshots/01-home.png"
+                alt="Supagate estate dashboard"
+                className={styles.screenImg}
+              />
+            </div>
           </div>
         </div>
 
