@@ -4,7 +4,7 @@
   --primary:    #009444;
   --primary-dk: #042817;
   --accent:     #4DCA90;
-  --bg:         #F4F7FB;
+  --bg:         radial-gradient(circle, rgba(0,148,68,0.07) 1px, transparent 1.6px) 0 0/24px 24px, #F5FAF7;
   --title:      #23365D;
   --text:       #282828;
   --sub:        #5F5F5F;
