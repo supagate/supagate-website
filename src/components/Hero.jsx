@@ -61,7 +61,7 @@ export default function Hero() {
             <div className={styles.notch} />
             <div className={styles.phoneScreen}>
               <img
-                src="/play-screenshots/07-security-inout.png"
+                src="/hero-crops/07-security-inout.png"
                 alt="Supagate gate in-out log"
                 className={styles.screenImg}
               />
@@ -75,7 +75,7 @@ export default function Hero() {
             <div className={styles.notch} />
             <div className={styles.phoneScreen}>
               <img
-                src="/play-screenshots/01-home.png"
+                src="/hero-crops/01-home.png"
                 alt="Supagate estate dashboard"
                 className={styles.screenImg}
               />
