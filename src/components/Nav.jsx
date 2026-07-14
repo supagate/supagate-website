@@ -73,7 +73,7 @@ export default function Nav() {
 
       <div className={styles.cta}>
         <a href="#contact" className="btn btn-outline" onClick={e => goToHash(e, 'contact')}>Contact Us</a>
-        <a href="#cta" className="btn btn-primary" onClick={e => goToHash(e, 'cta')}>Get the App</a>
+        <a href="/pilot" className="btn btn-primary">Join the Pilot</a>
       </div>
 
       <button

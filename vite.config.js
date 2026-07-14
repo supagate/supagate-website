@@ -15,6 +15,7 @@ export default defineConfig({
         deleteAccount: resolve(__dirname, 'delete-account.html'),
         acceptInvite: resolve(__dirname, 'accept-invite.html'),
         join: resolve(__dirname, 'join.html'),
+        pilot: resolve(__dirname, 'pilot.html'),
       },
     },
   },
