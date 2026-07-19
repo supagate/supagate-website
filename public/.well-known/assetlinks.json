@@ -1,10 +1,16 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "co.supagate.supagate",
-      "sha256_cert_fingerprints": ["E3:5D:A7:4F:4C:ED:A6:DB:CD:E5:55:C0:EC:74:5F:D1:8A:73:16:1C:83:70:94:88:0A:BA:19:38:7C:47:DB:21"]
+      "sha256_cert_fingerprints": [
+        "E3:5D:A7:4F:4C:ED:A6:DB:CD:E5:55:C0:EC:74:5F:D1:8A:73:16:1C:83:70:94:88:0A:BA:19:38:7C:47:DB:21",
+        "D4:46:A3:26:86:0C:ED:B9:0D:E1:BF:6F:17:23:23:5C:71:92:99:B0:E5:D8:DD:70:AD:2C:37:A4:B0:38:49:AB"
+      ]
     }
   }
 ]
