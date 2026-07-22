@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "6WX8UFH5Z8.co.supagate.supagate",
+        "appID": "KLZAQ535J5.co.supagate.app",
         "paths": ["/accept-invite", "/accept-invite.html", "/join", "/join.html", "NOT /admin/*"]
       }
     ]
