@@ -70,7 +70,7 @@ function Panel({ tab }) {
   return (
     <div ref={ref} className={`${styles.panel} aos`}>
       <div className={styles.panelText}>
-        <h2>{tab.heading}</h2>
+        <h3>{tab.heading}</h3>
         <p>{tab.desc}</p>
         <ul className={styles.featureList}>
           {tab.features.map(f => <li key={f}>{f}</li>)}
