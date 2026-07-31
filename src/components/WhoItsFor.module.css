@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-.panelText h2 {
+.panelText h3 {
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 800;
   color: var(--title);
