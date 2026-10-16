@@ -2,25 +2,27 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 20px;
-  border-radius: 12px;
+  min-height: 52px;
+  padding: 8px 20px 8px 16px;
+  border-radius: 14px;
   text-decoration: none;
-  transition: all 0.22s;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-out);
 }
 .btn:hover { transform: translateY(-2px); }
 
 .dark {
-  background: var(--primary-dk);
+  background: var(--ink);
   color: var(--white);
 }
-.dark:hover { background: #031e10; box-shadow: 0 8px 24px rgba(4,40,23,0.28); }
+.dark:hover { background: #12382a; }
 
 .light {
-  background: white;
-  color: var(--primary-dk);
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+  border: 1px solid var(--line-ink);
 }
-.light:hover { background: var(--bg); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.light:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
 
-.inner { line-height: 1.2; }
-.inner small { display: block; font-size: 0.68rem; opacity: 0.65; font-weight: 400; }
-.inner strong { font-size: 0.95rem; font-weight: 700; }
+.inner { line-height: 1.2; text-align: left; }
+.inner small { display: block; font-size: 0.7rem; opacity: 0.7; font-weight: 400; }
+.inner strong { font-size: 0.98rem; font-weight: 600; }

@@ -1,42 +1,39 @@
 import Nav from '../components/Nav'
-import Stats from '../components/Stats'
+import TrustPoints from '../components/TrustPoints'
 import CtaSection from '../components/CtaSection'
 import Footer from '../components/Footer'
+import Icon from '../components/Icon'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import styles from './AboutUs.module.css'
 
 const values = [
   {
-    icon: '🛡️',
-    bg: '#e8f7ef',
+    icon: 'shield',
     title: 'Security first',
     desc: 'Gate access and resident data are handled with the same care we\'d want for our own homes — every feature is built around trust.',
   },
   {
-    icon: '🇳🇬',
-    bg: '#e8f0ff',
+    icon: 'building',
     title: 'Built for Nigeria',
     desc: 'From Paystack payments to how estates actually run day to day, Supagate is designed around the realities of Nigerian gated communities.',
   },
   {
-    icon: '🤝',
-    bg: '#fff6d9',
+    icon: 'users',
     title: 'Community first',
     desc: 'Residents, security teams, and administrators are all part of the same community — the product is built to serve all three, not just one.',
   },
   {
-    icon: '⚡',
-    bg: '#fff0e5',
+    icon: 'sparkle',
     title: 'Simplicity over noise',
     desc: 'No clutter, no confusing dashboards. Just the tools an estate actually needs to run smoothly, in one place.',
   },
 ]
 
-function ValueCard({ icon, bg, title, desc, delay }) {
+function ValueCard({ icon, title, desc, delay }) {
   const ref = useScrollAnimation()
   return (
-    <div ref={ref} className={`${styles.card} aos`} style={{ transitionDelay: `${delay}ms` }}>
-      <div className={styles.icon} style={{ background: bg }}>{icon}</div>
+    <div ref={ref} className={`${styles.card} aos`} style={{ '--delay': `${delay}ms` }}>
+      <div className={styles.icon}><Icon name={icon} /></div>
       <h3>{title}</h3>
       <p>{desc}</p>
     </div>
@@ -54,7 +51,7 @@ export default function AboutUs() {
 
       <section className={styles.intro}>
         <div ref={introRef} className="section-header-center aos">
-          <div className="section-label">✦ About Us</div>
+          <div className="section-label">About Us</div>
           <h1 className="section-title">Smarter, safer estate living — for everyone inside the gate</h1>
           <p className={`section-sub ${styles.sub}`}>
             Supagate is the all-in-one platform for Nigerian gated
@@ -76,7 +73,7 @@ export default function AboutUs() {
 
       <section className={styles.section}>
         <div ref={storyRef} className="section-header aos">
-          <div className="section-label">✦ Our Story</div>
+          <div className="section-label">Our Story</div>
           <h2 className="section-title">Why we built Supagate</h2>
         </div>
         <div className={styles.storyGrid}>
@@ -99,7 +96,7 @@ export default function AboutUs() {
 
       <section className={styles.section}>
         <div ref={valuesHeaderRef} className="section-header-center aos">
-          <div className="section-label">✦ What We Believe</div>
+          <div className="section-label">What We Believe</div>
           <h2 className="section-title">The principles behind Supagate</h2>
         </div>
         <div className={styles.grid}>
@@ -109,7 +106,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <Stats />
+      <TrustPoints />
       <CtaSection />
       <Footer />
     </>

@@ -1,42 +1,126 @@
-.section { background: var(--bg); }
+.section { background: var(--white); }
 
 .grid {
+  max-width: var(--max);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .card {
-  background: white;
+  background: var(--cream);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 32px 28px;
-  border: 1px solid rgba(0,0,0,0.05);
-  transition: all 0.28s ease;
-  position: relative;
-  overflow: hidden;
+  padding: 32px;
+  transition: border-color var(--dur-base) ease, box-shadow var(--dur-base) ease, transform var(--dur-base) var(--ease-out),
+              opacity var(--dur-slow) var(--ease-out), translate var(--dur-slow) var(--ease-out);
+  /* stagger only the reveal; hover feedback stays immediate */
+  transition-delay: 0s, 0s, 0s, var(--delay, 0ms), var(--delay, 0ms);
 }
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--primary);
-  transform: scaleX(0);
-  transition: transform 0.28s ease;
-  transform-origin: left;
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,148,68,0.3);
+  box-shadow: 0 20px 40px -24px rgba(10,36,24,0.25);
 }
-.card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
-.card:hover::before { transform: scaleX(1); }
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 22px 0 10px;
+}
+.card p {
+  font-size: 0.97rem;
+  color: var(--sub);
+  line-height: 1.65;
+}
 
 .icon {
-  width: 52px; height: 52px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
   border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  background: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--line);
 }
-.card h3 { font-size: 1.05rem; font-weight: 700; color: var(--title); margin-bottom: 10px; }
-.card p  { font-size: 0.9rem; color: var(--sub); line-height: 1.65; }
+.iconLime {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: transparent;
+}
 
-@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px)  { .grid { grid-template-columns: 1fr; } }
+/* Feature hero card — dark, spans two rows */
+.hero {
+  grid-row: span 2;
+  background: var(--ink);
+  border-color: transparent;
+  color: var(--on-ink);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  min-height: 560px;
+}
+.hero h3 { color: var(--white); font-size: 1.45rem; }
+.hero p { color: var(--on-ink-sub); }
+.hero:hover { border-color: transparent; }
+.hero:hover .heroPhone { transform: translateY(-10px); }
+.heroPhone { transition: transform var(--dur-slow) var(--ease-out); }
+.heroText { position: relative; z-index: 1; }
+.heroPhone {
+  margin: 36px auto -170px;
+  width: 250px;
+  flex-shrink: 0;
+}
+
+/* Wide reports card */
+.wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+.wide > div:first-child { max-width: 480px; }
+
+.chart {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 20px 24px 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.chart span {
+  flex: 1;
+  border-radius: 8px 8px 0 0;
+  background: var(--green-pale);
+}
+.chart .barHi { background: var(--primary); }
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { grid-row: auto; grid-column: 1 / -1; min-height: 0; }
+  .heroPhone { margin-bottom: -280px; }
+  .hero { max-height: 520px; }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { padding: 26px; }
+  .wide { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* Chart bars grow from the baseline once the card scrolls into view. */
+.chart span {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 800ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms + 250ms);
+}
+.wide:global(.visible) .chart span { transform: scaleY(1); }
