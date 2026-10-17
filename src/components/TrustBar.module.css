@@ -31,13 +31,6 @@
   list-style: none;
 }
 
-.static .row {
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px 0;
-  padding: 0 5%;
-}
-
 .item {
   display: inline-flex;
   align-items: center;

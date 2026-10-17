@@ -1,5 +1,5 @@
 import Nav from '../components/Nav'
-import TrustPoints from '../components/TrustPoints'
+import Stats from '../components/Stats'
 import CtaSection from '../components/CtaSection'
 import Footer from '../components/Footer'
 import Icon from '../components/Icon'
@@ -106,7 +106,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <TrustPoints />
+      <Stats />
       <CtaSection />
       <Footer />
     </>

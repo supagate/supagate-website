@@ -1,14 +1,13 @@
 import Icon from './Icon'
 import Phone from './Phone'
+import CountUp from './CountUp'
 import StoreButton from './StoreButton'
 import styles from './Hero.module.css'
 
-// Product facts rather than vanity numbers: each one is something the app
-// visibly does today.
 const stats = [
-  { value: '3-in-1',  label: 'Admin, resident & security' },
-  { value: '6-digit', label: 'Single-use visitor passes' },
-  { value: 'Paystack', label: 'Secure in-app payments' },
+  { value: '500+',  label: 'Estates onboarded' },
+  { value: '20K+',  label: 'Active residents' },
+  { value: '99.9%', label: 'Uptime SLA' },
 ]
 
 export default function Hero() {
@@ -29,9 +28,9 @@ export default function Hero() {
           </h1>
 
           <p className={`${styles.sub} enter`} style={{ '--d': '180ms' }}>
-            Collect dues without the chase, verify every visitor at the gate,
-            and keep a record of everything that happens in your estate. One
-            app for administrators, residents and security.
+            Supagate brings residents, security, and administrators onto one
+            platform. Manage gate access, collect dues, book amenities, and
+            keep everyone informed from your phone.
           </p>
 
           <div className={`${styles.actions} enter`} style={{ '--d': '270ms' }}>
@@ -46,7 +45,7 @@ export default function Hero() {
             {stats.map(s => (
               <div key={s.label} className={styles.stat}>
                 <dt>{s.label}</dt>
-                <dd>{s.value}</dd>
+                <dd><CountUp value={s.value} /></dd>
               </div>
             ))}
           </dl>

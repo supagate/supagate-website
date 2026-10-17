@@ -5,39 +5,27 @@ import styles from './Faq.module.css'
 const faqs = [
   {
     q: 'Who is Supagate for?',
-    a: 'Gated estates and residential communities in Nigeria: the facility managers, developers and residents’ associations who run them, the residents who live there, and the security teams at the gate. Each role gets its own view inside one app.',
+    a: 'Gated estates and residential communities. Supagate gives estate administrators, residents, and security teams each their own tailored experience inside one shared platform.',
   },
   {
-    q: 'How does a visitor get in?',
-    a: 'The resident creates a pass code in the app and sends it to their guest. At the gate, security enters the 6-digit code or scans the QR. Each code works once and only within its time window, and every entry is logged.',
+    q: 'How does visitor access work?',
+    a: 'Residents generate a one-time access code for their guest from the app. Security verifies the code at the gate, and every entry and exit is logged with a timestamp, so there is a full audit trail with no paper logbook.',
   },
   {
-    q: 'What if a visitor arrives without a code?',
-    a: 'Security can register walk-in visitors directly from the gate app, whether it’s a guest, a delivery, an artisan or a car, so the visit is still recorded in the gate log.',
+    q: 'Can residents pay service charges through the app?',
+    a: 'Yes. Residents can pay dues, utility bills, and levies in-app. They get payment reminders and receipts, and administrators see collections and outstanding dues in real time.',
   },
   {
-    q: 'How do residents pay their dues?',
-    a: 'Residents see every bill in the app with what it is for and when it is due, and pay securely online through Paystack. Administrators see what has been collected and what is still outstanding.',
+    q: 'Do we need an IT team to get set up?',
+    a: 'No. You create your estate profile, add blocks, units, and amenities, then send invite links to residents and onboard your security team. Most of it takes a few taps.',
   },
   {
-    q: 'Can we bill some residents and not others?',
-    a: 'Yes. A bill can go to the whole estate, to a specific block, or to an individual household. It can be a one-off charge, like a repair or a fine, or recurring, like a quarterly utility levy.',
+    q: 'Is the app available on iOS and Android?',
+    a: 'Yes. Supagate is available on the App Store for iPhone and on Google Play for Android. Residents and security staff download the app and join their estate from an invite link.',
   },
   {
-    q: 'Can I manage more than one estate?',
-    a: 'Yes. Administrators can switch between the estates they manage from their profile, without signing out or using a second account.',
-  },
-  {
-    q: 'Is Supagate available on iOS and Android?',
-    a: 'Yes. Supagate is on the App Store for iPhone and on Google Play for Android. Residents and security staff download the same app and join their estate from an invite link.',
-  },
-  {
-    q: 'How is our estate’s data protected?',
-    a: 'Access is role-based, so residents, guards and administrators only see what their role needs. Guard access can be set to expire, and accounts can be protected with two-factor authentication. Our Privacy Policy explains what we collect and why.',
-  },
-  {
-    q: 'How much does Supagate cost?',
-    a: 'Pricing depends on the size of your estate. Email hello@supagate.co with a few details about your estate and we’ll send you a quote.',
+    q: 'Who can see our estate’s data?',
+    a: 'Access is role-based. Residents, security staff, and administrators only see what their role needs. Our Privacy Policy explains exactly what we collect and how it is used.',
   },
 ]
 

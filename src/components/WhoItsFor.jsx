@@ -9,47 +9,46 @@ const personas = [
     id: 'admin',
     eyebrow: 'Supagate for Estate Administrators',
     heading: 'Run your estate like a CEO',
-    desc: 'Facility managers and residents’ associations get one view of money, people and security, without compiling spreadsheets or calling round.',
+    desc: 'A command center for administrators. Track payments, manage residents, configure amenities, and resolve issues without a single phone call.',
     features: [
-      'Create bills for a block, a household or the whole estate',
-      'See collected and outstanding dues at a glance',
-      'Keep the resident directory up to date by block and unit',
-      'Onboard guards and control when their access expires',
-      'Track expenses and pull financial and security reports',
+      'Full resident directory with unit assignments',
+      'Automated service charge collection and receipts',
+      'Real-time gate activity and security alerts',
+      'Financial reports and outstanding dues tracking',
     ],
     screen: '/play-screenshots/02-residents.png',
     alt: 'Supagate admin residents directory',
-    chip: { icon: 'wallet', value: '₦51,000', label: 'Collected this month' },
+    chip: { icon: 'wallet', value: '₦4.2M', label: 'Dues collected this month' },
   },
   {
     id: 'resident',
     eyebrow: 'Supagate for Residents',
     heading: 'Live smarter, stress less',
-    desc: 'Everything you need from your estate in your pocket. Let guests in without a phone call and pay what you owe in a few taps.',
+    desc: 'Your digital companion at home. Invite guests, pay your bills, and stay connected with your estate community.',
     features: [
-      'Send guests a single-use pass code before they arrive',
-      'See every bill, what it is for and when it is due',
-      'Pay securely in the app with Paystack',
-      'Get alerts from your estate as they happen',
+      'Generate one-time visitor access codes',
+      'Pay service charges and utilities in-app',
+      'Book shared amenities with live availability',
+      'Receive estate announcements instantly',
     ],
     screen: '/play-screenshots/03-payment.png',
-    alt: 'Supagate payments screen listing estate bills',
-    chip: { icon: 'qr', value: 'Active', label: 'Guest pass code valid' },
+    alt: 'Supagate resident payments screen',
+    chip: { icon: 'qr', value: 'Active', label: 'Guest access code valid' },
   },
   {
     id: 'security',
     eyebrow: 'Supagate for Security Teams',
     heading: 'Guard smarter, not harder',
-    desc: 'A gate app built for the post. Verify visitors in seconds and let the log do the paperwork.',
+    desc: 'A purpose-built mobile interface for managing gate access, logging incidents, and reaching residents and admin in real time.',
     features: [
-      'Enter a 6-digit pass code or scan the guest’s QR',
-      'Reused or out-of-hours passes are flagged and denied',
-      'Register walk-in guests, deliveries, artisans and cars',
-      'Every entry and exit is logged with the time',
+      'Verify visitor pass codes and QR tokens',
+      'Log every entry and exit with timestamps',
+      'Raise and escalate security alerts',
+      'Shift handover logs and duty records',
     ],
     screen: '/hero-crops/07-security-inout.png',
     alt: 'Supagate security in-out gate log',
-    chip: { icon: 'shield', value: '3 denied', label: 'Used or out-of-hours passes' },
+    chip: { icon: 'shield', value: '247', label: 'Verified entries today' },
   },
 ]
 
@@ -94,8 +93,8 @@ export default function WhoItsFor() {
     <section className={styles.section} id="who">
       <div ref={headerRef} className="section-header-center aos">
         <div className="section-label">Who It's For</div>
-        <h2 className="section-title">One app for every role in the estate</h2>
-        <p className="section-sub">Administrators, residents and gate teams each get the tools they need, working from the same records.</p>
+        <h2 className="section-title">Built for everyone inside the gate</h2>
+        <p className="section-sub">One platform, three tailored experiences. Everyone gets the tools they need and nothing they don't.</p>
       </div>
 
       <div className={styles.rows}>

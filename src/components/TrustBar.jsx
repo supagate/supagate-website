@@ -18,27 +18,16 @@ function Row({ hidden = false }) {
   )
 }
 
-// A short list sits still and centred; the marquee only kicks in once
-// there are enough names to fill the width without visible repeats.
-const MARQUEE_MIN = 6
-
 export default function TrustBar() {
-  const scrolls = estates.length >= MARQUEE_MIN
   return (
     <div className={styles.bar}>
-      <p className={styles.label}>Estates already running on Supagate</p>
-      {scrolls ? (
-        <div className={styles.marquee}>
-          <div className={styles.track}>
-            <Row />
-            <Row hidden />
-          </div>
-        </div>
-      ) : (
-        <div className={styles.static}>
+      <p className={styles.label}>Trusted by gated communities across Nigeria</p>
+      <div className={styles.marquee}>
+        <div className={styles.track}>
           <Row />
+          <Row hidden />
         </div>
-      )}
+      </div>
     </div>
   )
 }

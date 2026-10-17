@@ -86,11 +86,3 @@
   .grid { grid-template-columns: 1fr; }
   .number { margin-bottom: 24px; }
 }
-
-.inlineLink {
-  color: var(--lime);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.inlineLink:hover { color: var(--white); }

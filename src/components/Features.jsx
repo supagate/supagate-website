@@ -4,10 +4,10 @@ import Phone from './Phone'
 import styles from './Features.module.css'
 
 const features = [
-  { icon: 'wallet',  title: 'Collect dues without the chase', desc: 'Bill service charges, levies, utilities and repairs, one-off or recurring. Send to a block, one household or every resident, and watch payments come in.' },
-  { icon: 'list',    title: 'A gate log that never forgets',  desc: 'Every entry, exit and denied attempt is recorded with the time and the resident visited. Filter by in, out or denied in a tap.' },
-  { icon: 'users',   title: 'Know every resident',            desc: 'A live directory of residents by block and unit, with contact details your admin and security teams can rely on.' },
-  { icon: 'badge',   title: 'Manage your security team',      desc: 'Add guards from your security company, give them access to the gate app, and set when that access expires.' },
+  { icon: 'users',     title: 'Resident Management',      desc: 'A complete, up-to-date directory of every resident. Add, update, or deactivate residents with role-based access.' },
+  { icon: 'wallet',    title: 'Payments & Service Charges', desc: 'Collect dues, utility bills, and levies digitally, with reminders, receipts, and full transaction history.' },
+  { icon: 'calendar',  title: 'Amenity Bookings',         desc: 'Residents book pools, gyms, and event halls in the app. No double bookings, no disputes.' },
+  { icon: 'megaphone', title: 'Notice Board & Community', desc: 'Announcements and emergency alerts reach every resident, without the noise of group chats.' },
 ]
 
 const bars = [42, 58, 51, 74, 66, 88, 81]
@@ -27,16 +27,16 @@ export default function Features() {
     <section className={styles.section} id="features">
       <div ref={headerRef} className="section-header-center aos">
         <div className="section-label">Key Features</div>
-        <h2 className="section-title">Everything your estate runs on, in one app</h2>
-        <p className="section-sub">Dues, gate access, residents and security, connected. No more spreadsheets, notebooks and WhatsApp threads that never agree.</p>
+        <h2 className="section-title">Everything your estate needs, in one place</h2>
+        <p className="section-sub">From gate control to community communication, Supagate handles the complexity so you can focus on living.</p>
       </div>
 
       <div className={styles.grid}>
         <Card className={styles.hero}>
           <div className={styles.heroText}>
             <span className={`${styles.icon} ${styles.iconLime}`}><Icon name="shield" /></span>
-            <h3>Verified security at every gate</h3>
-            <p>Residents send guests a 6-digit pass code. Security enters it or scans the QR, and Supagate checks it on the spot. Codes work once and only within their time window, so a reused or early pass is turned away.</p>
+            <h3>Smart Gate Access</h3>
+            <p>Control who enters and exits in real time. Residents issue one-time pass codes; security verifies them at the gate and every event lands in a full audit trail.</p>
           </div>
           <Phone
             src="/play-screenshots/06-security-home.png"
@@ -56,8 +56,8 @@ export default function Features() {
         <Card className={styles.wide}>
           <div>
             <span className={styles.icon}><Icon name="chart" /></span>
-            <h3>Reports, expenses and your estate balance</h3>
-            <p>See collected versus outstanding dues, track what the estate spends, and pull financial, security and engagement reports when the committee meets.</p>
+            <h3>Reports & Analytics</h3>
+            <p>Detailed reports on gate activity, payment rates, and maintenance requests, so every decision about your estate is backed by data.</p>
           </div>
           <div className={styles.chart} aria-hidden="true">
             {bars.map((h, i) => (

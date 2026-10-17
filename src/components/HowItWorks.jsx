@@ -2,10 +2,10 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import styles from './HowItWorks.module.css'
 
 const steps = [
-  { n: '01', title: 'Create your estate',      desc: 'Download the app, name your estate and add your blocks and units.' },
-  { n: '02', title: 'Invite your residents',   desc: 'Share an invite link. Residents join from their phone and are matched to their unit.' },
-  { n: '03', title: 'Add your security team',  desc: 'Register your guards, link them to their security company and set how long their access lasts.' },
-  { n: '04', title: 'Turn on collections',     desc: 'Create your first bills. Residents see what they owe and pay in the app.' },
+  { n: '01', title: 'Create your estate', desc: 'Sign up and set up your estate profile. Add your blocks, units, and amenities in a few taps.' },
+  { n: '02', title: 'Invite residents',   desc: 'Send invite links to residents. They download the app and join their unit in seconds.' },
+  { n: '03', title: 'Activate security',  desc: 'Onboard your security team. They log and manage every gate event, live.' },
+  { n: '04', title: 'Run everything',     desc: 'Collect dues, approve visitors, post notices, and track activity from one dashboard.' },
 ]
 
 function Step({ n, title, desc, delay }) {
@@ -27,9 +27,9 @@ export default function HowItWorks() {
         <div ref={headerRef} className={`${styles.header} aos`}>
           <div>
             <div className="section-label">How It Works</div>
-            <h2 className="section-title">Set up your estate in four steps</h2>
+            <h2 className="section-title">Up and running in minutes</h2>
           </div>
-          <p className="section-sub">No IT team and no long onboarding. Your committee can set up the whole estate from a phone. Prefer a hand? <a href="mailto:hello@supagate.co?subject=Supagate%20walkthrough" className={styles.inlineLink}>Book a walkthrough</a>.</p>
+          <p className="section-sub">Getting your estate on Supagate is simple. No long onboarding, no IT team required.</p>
         </div>
         <ol className={styles.grid}>
           {steps.map((s, i) => (

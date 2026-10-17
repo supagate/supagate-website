@@ -22,9 +22,9 @@ export default function CtaSection() {
           </div>
         </div>
         <div className={styles.side}>
-          <p>Want us to walk your committee through it?</p>
-          <a href="mailto:hello@supagate.co?subject=Supagate%20walkthrough" className="btn btn-ghost-white">
-            Book a walkthrough
+          <p>Managing a large estate or portfolio?</p>
+          <a href="mailto:hello@supagate.co" className="btn btn-ghost-white">
+            Contact Sales
           </a>
         </div>
       </div>
