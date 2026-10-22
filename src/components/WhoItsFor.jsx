@@ -1,120 +1,105 @@
-import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import Icon from './Icon'
+import Phone from './Phone'
+import AppLink from './AppLink'
 import styles from './WhoItsFor.module.css'
 
-const tabs = [
+const personas = [
   {
     id: 'admin',
-    label: 'Estate Administrators',
+    eyebrow: 'Supagate for Estate Administrators',
     heading: 'Run your estate like a CEO',
-    desc: 'Supagate gives administrators a powerful command center — track payments, manage residents, configure amenities, and resolve issues without a single phone call.',
+    desc: 'A command center for administrators. Track payments, manage residents, configure amenities, and resolve issues without a single phone call.',
     features: [
       'Full resident directory with unit assignments',
       'Automated service charge collection and receipts',
       'Real-time gate activity and security alerts',
-      'Amenity scheduling and booking management',
-      'Community notice board with push notifications',
       'Financial reports and outstanding dues tracking',
     ],
-    cards: [
-      { icon: '💰', bg: '#e8f7ef', value: '₦4.2M',      sub: 'Dues collected this month' },
-      { icon: '👥', bg: '#e8f0ff', value: '247',          sub: 'Active residents' },
-      { icon: '🔔', bg: '#fff6d9', value: '3',            sub: 'Pending notices to send' },
-      { icon: '⚠️', bg: '#feeaea', value: '5',            sub: 'Outstanding maintenance' },
-    ],
+    screen: '/play-screenshots/02-residents.png',
+    alt: 'Supagate admin residents directory',
+    chip: { icon: 'wallet', value: '₦4.2M', label: 'Dues collected this month' },
   },
   {
     id: 'resident',
-    label: 'Residents',
+    eyebrow: 'Supagate for Residents',
     heading: 'Live smarter, stress less',
-    desc: 'As a resident, Supagate is your digital companion — manage your home, invite guests, pay your bills, and stay connected with your estate community.',
+    desc: 'Your digital companion at home. Invite guests, pay your bills, and stay connected with your estate community.',
     features: [
       'Generate one-time visitor access codes',
       'Pay service charges and utilities in-app',
       'Book shared amenities with live availability',
       'Receive estate announcements instantly',
-      'Track your payment history and receipts',
-      'Request artisan and maintenance services',
     ],
-    cards: [
-      { icon: '🔑', bg: '#e8f7ef', value: 'Active',       sub: 'Guest access code valid' },
-      { icon: '📅', bg: '#e8f0ff', value: 'Jul 5',         sub: 'Pool booking confirmed' },
-      { icon: '🔧', bg: '#fff0e5', value: 'In Progress',   sub: 'Plumbing request #047' },
-      { icon: '✅', bg: '#f0eeff', value: 'Paid',           sub: 'June service charge' },
-    ],
+    screen: '/play-screenshots/03-payment.png',
+    alt: 'Supagate resident payments screen',
+    chip: { icon: 'qr', value: 'Active', label: 'Guest access code valid' },
   },
   {
     id: 'security',
-    label: 'Security Teams',
+    eyebrow: 'Supagate for Security Teams',
     heading: 'Guard smarter, not harder',
-    desc: 'Security personnel get a purpose-built mobile interface for managing gate access, logging incidents, and communicating with residents and admin in real time.',
+    desc: 'A purpose-built mobile interface for managing gate access, logging incidents, and reaching residents and admin in real time.',
     features: [
-      'Verify visitor QR codes and access tokens',
-      'Log entry and exit with timestamps',
+      'Verify visitor pass codes and QR tokens',
+      'Log every entry and exit with timestamps',
       'Raise and escalate security alerts',
-      'View resident contact info for verification',
-      'Incident reporting with photo attachment',
       'Shift handover logs and duty records',
     ],
-    cards: [
-      { icon: '✅', bg: '#e8f7ef', value: '247',          sub: 'Verified entries today' },
-      { icon: '🚨', bg: '#feeaea', value: '0',             sub: 'Active alerts right now' },
-      { icon: '📋', bg: '#fff6d9', value: '18',            sub: 'Visitors logged today' },
-      { icon: '🔒', bg: '#e8f0ff', value: 'Secure',        sub: 'All gates operational' },
-    ],
+    screen: '/hero-crops/07-security-inout.png',
+    alt: 'Supagate security in-out gate log',
+    chip: { icon: 'shield', value: '247', label: 'Verified entries today' },
   },
 ]
 
-function Panel({ tab }) {
+function Row({ p, reverse }) {
   const ref = useScrollAnimation()
   return (
-    <div ref={ref} className={`${styles.panel} aos`}>
-      <div className={styles.panelText}>
-        <h3>{tab.heading}</h3>
-        <p>{tab.desc}</p>
-        <ul className={styles.featureList}>
-          {tab.features.map(f => <li key={f}>{f}</li>)}
-        </ul>
-      </div>
-      <div className={styles.panelVisual}>
-        <div className={styles.cardGrid}>
-          {tab.cards.map(c => (
-            <div key={c.sub} className={styles.miniCard}>
-              <div className={styles.miniIcon} style={{ background: c.bg }}>{c.icon}</div>
-              <strong>{c.value}</strong>
-              <span>{c.sub}</span>
-            </div>
+    <article ref={ref} className={`${styles.row} ${reverse ? styles.reverse : ''} aos`} id={`for-${p.id}`}>
+      <div className={styles.text}>
+        <div className="section-label">{p.eyebrow}</div>
+        <h3>{p.heading}</h3>
+        <p>{p.desc}</p>
+        <ul className={`${styles.list} stagger`}>
+          {p.features.map((f, i) => (
+            <li key={f} style={{ '--i': i }}>
+              <span className={styles.tick}><Icon name="check" size={14} strokeWidth={2.6} /></span>
+              {f}
+            </li>
           ))}
+        </ul>
+        <AppLink />
+      </div>
+
+      <div className={styles.visual}>
+        <div className={styles.stage}>
+          <Phone src={p.screen} alt={p.alt} className={styles.phone} />
+          <div className={styles.chip} aria-hidden="true">
+            <span className={styles.chipIcon}><Icon name={p.chip.icon} size={18} /></span>
+            <span>
+              <strong>{p.chip.value}</strong>
+              <small>{p.chip.label}</small>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   )
 }
 
 export default function WhoItsFor() {
-  const [active, setActive] = useState(0)
   const headerRef = useScrollAnimation()
-
   return (
     <section className={styles.section} id="who">
-      <div ref={headerRef} className="section-header aos">
-        <div className="section-label">✦ Who It's For</div>
-        <h2 className="section-title">Built for everyone in the estate</h2>
+      <div ref={headerRef} className="section-header-center aos">
+        <div className="section-label">Who It's For</div>
+        <h2 className="section-title">Built for everyone inside the gate</h2>
+        <p className="section-sub">One platform, three tailored experiences. Everyone gets the tools they need and nothing they don't.</p>
       </div>
 
-      <div className={styles.tabs}>
-        {tabs.map((t, i) => (
-          <button
-            key={t.id}
-            className={`${styles.tab} ${active === i ? styles.tabActive : ''}`}
-            onClick={() => setActive(i)}
-          >
-            {t.label}
-          </button>
-        ))}
+      <div className={styles.rows}>
+        {personas.map((p, i) => <Row key={p.id} p={p} reverse={i % 2 === 1} />)}
       </div>
-
-      <Panel key={active} tab={tabs[active]} />
     </section>
   )
 }

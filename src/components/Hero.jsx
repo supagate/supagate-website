@@ -1,93 +1,85 @@
+import Icon from './Icon'
+import Phone from './Phone'
+import CountUp from './CountUp'
 import StoreButton from './StoreButton'
 import styles from './Hero.module.css'
 
 const stats = [
-  { value: '500+',  label: 'Estates Onboarded' },
-  { value: '20K+',  label: 'Active Residents' },
+  { value: '500+',  label: 'Estates onboarded' },
+  { value: '20K+',  label: 'Active residents' },
   { value: '99.9%', label: 'Uptime SLA' },
 ]
 
 export default function Hero() {
   return (
     <section className={styles.hero} id="home">
-      <div className={styles.content}>
-        <div className={styles.badge}>
-          <span className={styles.dot} />
-          Now Live — Smarter Estate Management
-        </div>
+      <div className={styles.panel}>
+        <div className={styles.glow} aria-hidden="true" />
 
-        <h1 className={styles.heading}>
-          Your estate,<br />
-          <span className={styles.highlight}>fully in control.</span>
-        </h1>
+        <div className={styles.content}>
+          <a href="#download" className={`${styles.badge} enter`}>
+            <span className={styles.dot} />
+            Now live on iOS and Android
+            <Icon name="arrowRight" size={16} />
+          </a>
 
-        <p className={styles.sub}>
-          Supagate brings residents, security, and administrators onto one
-          seamless platform — manage gate access, pay dues, book amenities,
-          and stay connected, all from your phone.
-        </p>
+          <h1 className={`${styles.heading} enter`} style={{ '--d': '90ms' }}>
+            Your estate, <span className={styles.highlight}>fully in control.</span>
+          </h1>
 
-        <div className={styles.actions}>
-          <StoreButton store="apple" />
-          <StoreButton store="play" />
-        </div>
+          <p className={`${styles.sub} enter`} style={{ '--d': '180ms' }}>
+            Supagate brings residents, security, and administrators onto one
+            platform. Manage gate access, collect dues, book amenities, and
+            keep everyone informed from your phone.
+          </p>
 
-        <div className={styles.stats}>
-          {stats.map(s => (
-            <div key={s.label} className={styles.stat}>
-              <strong>{s.value}</strong>
-              <span>{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.visual}>
-        <div className={styles.blob} />
-
-        <div className={`${styles.floatCard} ${styles.floatLeft}`}>
-          <div className={styles.floatIcon} style={{ background: '#e8f7ef' }}>🛡️</div>
-          <div className={styles.floatText}>
-            <strong>Gate Secured</strong>
-            <span>Visitor approved ✓</span>
-          </div>
-        </div>
-
-        <div className={styles.phoneStack}>
-          <div className={`${styles.phoneFrame} ${styles.phoneBack}`}>
-            <div className={styles.btnPower} />
-            <div className={styles.btnVolUp} />
-            <div className={styles.btnVolDn} />
-            <div className={styles.notch} />
-            <div className={styles.phoneScreen}>
-              <img
-                src="/hero-crops/07-security-inout.png"
-                alt="Supagate gate in-out log"
-                className={styles.screenImg}
-              />
-            </div>
+          <div className={`${styles.actions} enter`} style={{ '--d': '270ms' }}>
+            <StoreButton store="apple" light />
+            <StoreButton store="play" light />
+            <a href="#how-it-works" className={`btn btn-ghost-white btn-lg ${styles.howLink}`}>
+              See how it works
+            </a>
           </div>
 
-          <div className={`${styles.phoneFrame} ${styles.phoneFront}`}>
-            <div className={styles.btnPower} />
-            <div className={styles.btnVolUp} />
-            <div className={styles.btnVolDn} />
-            <div className={styles.notch} />
-            <div className={styles.phoneScreen}>
-              <img
-                src="/hero-crops/01-home.png"
-                alt="Supagate estate dashboard"
-                className={styles.screenImg}
-              />
-            </div>
-          </div>
+          <dl className={`${styles.stats} enter`} style={{ '--d': '360ms' }}>
+            {stats.map(s => (
+              <div key={s.label} className={styles.stat}>
+                <dt>{s.label}</dt>
+                <dd><CountUp value={s.value} /></dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <div className={`${styles.floatCard} ${styles.floatRight}`}>
-          <div className={styles.floatIcon} style={{ background: '#fff6d9' }}>💳</div>
-          <div className={styles.floatText}>
-            <strong>Payment Received</strong>
-            <span>Service charge ✓</span>
+        <div className={styles.visual}>
+          <Phone
+            src="/play-screenshots/04-admin-security-list.png"
+            alt="Supagate admin view of the estate security team"
+            className={`${styles.phoneBack} ${styles.phoneEnter}`}
+            style={{ '--d': '420ms' }}
+          />
+          <Phone
+            src="/hero-crops/01-home.png"
+            alt="Supagate admin home with balance overview, visitors today and quick actions"
+            className={`${styles.phoneFront} ${styles.phoneEnter}`}
+            style={{ '--d': '260ms' }}
+            eager
+          />
+
+          <div className={`${styles.floatCard} ${styles.floatTop}`} style={{ '--d': '900ms' }} aria-hidden="true">
+            <span className={styles.floatIcon}><Icon name="shield" size={20} /></span>
+            <span>
+              <strong>Visitor approved</strong>
+              <small>Gate 2 · just now</small>
+            </span>
+          </div>
+
+          <div className={`${styles.floatCard} ${styles.floatBottom}`} style={{ '--d': '1100ms' }} aria-hidden="true">
+            <span className={`${styles.floatIcon} ${styles.floatIconLime}`}><Icon name="wallet" size={20} /></span>
+            <span>
+              <strong>Service charge paid</strong>
+              <small>Receipt sent to resident</small>
+            </span>
           </div>
         </div>
       </div>

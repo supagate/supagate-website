@@ -1,0 +1,23 @@
+.frame {
+  width: 270px;
+  padding: 10px;
+  border-radius: 44px;
+  background: linear-gradient(160deg, #1d2d24 0%, #08160f 60%, #050d09 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06) inset,
+    0 40px 80px -20px rgba(4,40,23,0.45),
+    0 18px 36px -18px rgba(4,40,23,0.35);
+}
+
+.screen {
+  aspect-ratio: 1080 / 2340;
+  border-radius: 34px;
+  overflow: hidden;
+  background: #f4f7f5;
+}
+
+.screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

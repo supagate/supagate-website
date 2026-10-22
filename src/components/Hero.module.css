@@ -1,200 +1,247 @@
 .hero {
-  min-height: 100vh;
-  padding: 120px 5% 80px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  background: linear-gradient(145deg, #f0faf5 0%, #ffffff 50%, #f4f7fb 100%);
+  padding: 92px 16px 0;
+}
+
+.panel {
   position: relative;
   overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-radius: 32px;
+  background:
+    radial-gradient(rgba(195,240,122,0.07) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    linear-gradient(160deg, #0E3121 0%, var(--ink) 55%, #071a11 100%);
+  color: var(--on-ink);
+  padding: 88px max(5%, 32px) 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 48px;
+  align-items: center;
 }
-.hero::before {
-  content: '';
+
+.glow {
   position: absolute;
-  top: -120px; right: -120px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(0,148,68,0.07) 0%, transparent 70%);
+  width: 640px;
+  height: 640px;
+  right: -120px;
+  top: -80px;
   border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,148,68,0.55) 0%, rgba(0,148,68,0) 65%);
   pointer-events: none;
 }
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -80px; left: -80px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(77,202,144,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 88px;
+  max-width: 600px;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--green-pale);
-  color: var(--primary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 50px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0,148,68,0.15);
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 16px 0 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--line-ink);
+  color: var(--on-ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
+.badge:hover { background: rgba(255,255,255,0.1); border-color: rgba(195,240,122,0.4); }
+.badge svg { color: var(--lime); }
+
 .dot {
-  width: 7px; height: 7px;
-  background: var(--primary);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+  background: var(--lime);
+  box-shadow: 0 0 0 4px rgba(195,240,122,0.18);
 }
 
 .heading {
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 800;
-  color: var(--title);
-  line-height: 1.15;
-  letter-spacing: -1px;
-  margin-bottom: 20px;
+  font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  margin-bottom: 24px;
+  text-wrap: balance;
 }
-.highlight { color: var(--primary); }
+.highlight { color: var(--lime); }
 
 .sub {
-  font-size: 1.1rem;
-  color: var(--sub);
-  max-width: 480px;
-  margin-bottom: 36px;
+  font-size: 1.125rem;
   line-height: 1.7;
+  color: var(--on-ink-sub);
+  max-width: 520px;
+  margin-bottom: 36px;
+  text-wrap: pretty;
 }
 
 .actions {
   display: flex;
-  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  gap: 12px;
+  margin-bottom: 56px;
 }
 
-.stats { display: flex; gap: 32px; }
-.stat strong { display: block; font-size: 1.6rem; font-weight: 800; color: var(--title); }
-.stat span { font-size: 0.82rem; color: var(--sub); }
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-ink);
+}
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end; /* numbers align at the top even when labels wrap */
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid var(--line-ink);
+}
+.stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.stat dd {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat dt {
+  font-size: 0.85rem;
+  color: var(--on-ink-sub);
+  margin-top: 4px;
+}
 
-/* ── Visual / phone ── */
+/* ── Visual ── */
 .visual {
   position: relative;
+  z-index: 1;
+  align-self: end;
+  height: 600px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
-.blob {
+
+.phoneFront,
+.phoneBack {
   position: absolute;
-  width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(0,148,68,0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  pointer-events: none;
+  bottom: -110px;
+}
+.phoneFront {
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-62%);
+}
+.phoneBack {
+  z-index: 1;
+  left: 50%;
+  bottom: -150px;
+  transform: translateX(8%) rotate(7deg);
+  opacity: 0.92;
 }
 
 .floatCard {
   position: absolute;
-  background: white;
-  border-radius: 14px;
-  padding: 12px 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  z-index: 3;
   display: flex;
   align-items: center;
-  gap: 10px;
-  z-index: 3;
+  gap: 12px;
+  padding: 12px 18px 12px 12px;
+  background: var(--white);
+  color: var(--text);
+  border-radius: 16px;
+  box-shadow: 0 24px 48px -16px rgba(0,0,0,0.45);
+  /* Pop in after the phones land, then drift gently. */
+  animation:
+    float-in 700ms var(--ease-spring) var(--d, 0ms) both,
+    float 6s ease-in-out calc(var(--d, 0ms) + 700ms) infinite;
 }
-.floatLeft  { left: -60px; top: 15%; animation: floatY 3s ease-in-out infinite; }
-.floatRight { right: -60px; bottom: 20%; animation: floatY 3.5s ease-in-out infinite reverse; }
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.floatIcon {
-  width: 38px; height: 38px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; flex-shrink: 0;
-}
-.floatText strong { display: block; font-size: 0.82rem; color: var(--title); }
-.floatText span { font-size: 0.72rem; color: var(--sub); }
-
-/* ── Phone mockup ── */
-.phoneStack {
-  position: relative;
-  width: 280px;
-  height: 560px;
-}
-.phoneFrame {
-  position: absolute;
-  top: 0; left: 0;
-  width: 280px; height: 560px;
-  background: linear-gradient(155deg, #1c2b22 0%, #0B1F14 45%, #06120c 100%);
-  border-radius: 40px;
-  padding: 12px;
-  box-shadow: 0 40px 80px rgba(4,40,23,0.35), 0 0 0 1px rgba(255,255,255,0.08) inset;
-}
-.phoneFront { z-index: 3; }
-.phoneBack {
-  z-index: 1;
-  transform: translate(56px, -36px) rotate(8deg);
-  filter: brightness(0.96);
-}
-.btnPower, .btnVolUp, .btnVolDn {
-  position: absolute;
-  background: linear-gradient(90deg, #23352a, #0B1F14);
-  border-radius: 3px;
-}
-.btnPower { right: -3px; top: 96px; width: 3px; height: 40px; }
-.btnVolUp { left: -3px; top: 81px; width: 3px; height: 26px; }
-.btnVolDn { left: -3px; top: 114px; width: 3px; height: 26px; }
-.notch {
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #3a5a6a, #060a0c 75%);
-  z-index: 3;
-  box-shadow: 0 0 0 4px rgba(0,0,0,0.35);
-}
-.phoneScreen {
-  width: 100%; height: 100%;
-  background: var(--bg);
-  border-radius: 30px;
-  overflow: hidden;
-  position: relative;
-}
-/* Source is a real 1080x2340 device screenshot of the Home screen. Scaled
-   and offset so the visible window is exactly the app content between the
-   OS status bar and the OS nav bar (see the same crop math used for the
-   Play Store marketing screenshots) — a slight horizontal overflow is
-   clipped by .phoneScreen's overflow:hidden, which reads as a barely
-   noticeable zoom rather than letterboxing. */
-.screenImg {
-  position: absolute;
-  top: -19px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 273px;
-  height: auto;
+.floatCard strong {
   display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.floatCard small { font-size: 0.78rem; color: var(--sub); }
+
+.floatTop { top: 90px; left: -8px; }
+.floatBottom { bottom: 120px; right: -4px; }
+
+.floatIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--green-pale);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.floatIconLime { background: #EEF9D9; color: #4B7A12; }
+
+/* Phones rise into the panel; `translate` composes with their rotation. */
+.phoneEnter {
+  animation: phone-rise 1100ms var(--ease-out) var(--d, 0ms) both;
+}
+@keyframes phone-rise {
+  from { opacity: 0; translate: 0 80px; }
 }
 
-@media (max-width: 1024px) {
-  .floatLeft, .floatRight { display: none; }
+.glow { animation: glow-breathe 8s ease-in-out infinite alternate; }
+@keyframes glow-breathe {
+  from { opacity: 0.75; scale: 1; }
+  to   { opacity: 1;    scale: 1.08; }
 }
-@media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
-  .sub { max-width: 100%; }
-  .actions { justify-content: center; }
-  .stats { justify-content: center; }
-  .visual { display: none; }
+
+@keyframes float-in {
+  from { opacity: 0; scale: 0.8; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 1100px) {
+  .floatTop { left: -24px; }
+  .floatBottom { right: -24px; }
+}
+
+@media (max-width: 960px) {
+  .panel {
+    grid-template-columns: 1fr;
+    padding-top: 64px;
+    gap: 0;
+  }
+  .content { padding-bottom: 48px; max-width: none; }
+  .visual { height: 460px; }
+  .phoneFront { transform: translateX(-75%) scale(0.86); transform-origin: bottom center; bottom: -150px; }
+  .phoneBack { transform: translateX(-10%) rotate(7deg) scale(0.86); transform-origin: bottom center; bottom: -190px; }
+  .floatTop { top: 30px; left: 0; }
+  .floatBottom { bottom: 100px; right: 0; }
+}
+
+@media (max-width: 560px) {
+  .hero { padding: 84px 10px 0; }
+  .panel { border-radius: 24px; padding: 48px 20px 0; }
+  .actions > * { flex: 1 1 0; justify-content: center; padding-left: 12px; padding-right: 12px; }
+  .actions > .howLink { flex: 1 1 100%; }
+  .actions { margin-bottom: 40px; }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stat { padding: 0 12px; margin: 0; }
+  .stat:first-child { padding-left: 0; }
+  .stat dd { font-size: 1.35rem; }
+  .stat dt { font-size: 0.75rem; }
+  .content { padding-bottom: 24px; }
+  .visual { height: 360px; }
+  .floatCard { display: none; }
 }

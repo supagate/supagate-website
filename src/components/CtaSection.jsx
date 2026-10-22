@@ -4,21 +4,29 @@ import styles from './CtaSection.module.css'
 
 export default function CtaSection() {
   return (
-    <section className={styles.section} id="cta">
-      <div className={styles.logoWrap}>
-        <LogoWhite width={36} height={42} />
-      </div>
-      <h2>Ready to transform your estate?</h2>
-      <p>
-        Join hundreds of estates already running smarter with Supagate.<br />
-        Get started for free — no credit card required.
-      </p>
-      <div className={styles.actions}>
-        <StoreButton store="apple" light />
-        <StoreButton store="play" light />
-        <a href="#contact" className="btn btn-ghost-white" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
-          Contact Sales
-        </a>
+    <section className={styles.section} id="download">
+      <div className={styles.panel}>
+        <div className={styles.glow} aria-hidden="true" />
+        <div className={styles.text}>
+          <div className={styles.logoWrap} aria-hidden="true">
+            <LogoWhite width={26} height={30} />
+          </div>
+          <h2>Unlock a smarter, safer estate.</h2>
+          <p>
+            Supagate is live on iOS and Android. Download the app, set up your
+            estate, and invite your residents. It takes minutes.
+          </p>
+          <div className={styles.actions}>
+            <StoreButton store="apple" light />
+            <StoreButton store="play" light />
+          </div>
+        </div>
+        <div className={styles.side}>
+          <p>Managing a large estate or portfolio?</p>
+          <a href="mailto:hello@supagate.co" className="btn btn-ghost-white">
+            Contact Sales
+          </a>
+        </div>
       </div>
     </section>
   )

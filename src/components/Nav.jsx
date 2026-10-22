@@ -1,32 +1,42 @@
 import { useState, useEffect } from 'react'
 import LogoGreen from './LogoGreen'
+import AppLink from './AppLink'
 import styles from './Nav.module.css'
 
 const links = [
   { hash: 'features', label: 'Features' },
-  { hash: 'how-it-works', label: 'How It Works' },
   { hash: 'who', label: 'Who It\'s For' },
-  { hash: 'testimonials', label: 'Reviews' },
+  { hash: 'how-it-works', label: 'How It Works' },
+  { hash: 'faq', label: 'FAQs' },
   { href: '/about', label: 'About Us' },
-  { hash: 'contact', label: 'Contact' },
 ]
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]')
     const onScroll = () => {
       let current = ''
       sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id
+        if (window.scrollY >= s.offsetTop - 120) current = s.id
       })
       setActive(current)
+      setScrolled(window.scrollY > 8)
     }
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = e => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
   // Hash links (Features, Contact, etc.) jump to the section in place when
   // it exists on the current page; otherwise they navigate home and land
@@ -41,48 +51,57 @@ export default function Nav() {
   const isAboutPage = window.location.pathname.startsWith('/about')
 
   return (
-    <nav className={styles.nav}>
-      <a href="#home" className={styles.logo} onClick={e => goToHash(e, 'home')}>
-        <LogoGreen />
-        <span>Supagate</span>
-      </a>
+    <header className={`${styles.nav} ${scrolled || open ? styles.scrolled : ''}`}>
+      <nav className={styles.inner} aria-label="Main">
+        <a href="/#home" className={styles.logo} onClick={e => goToHash(e, 'home')}>
+          <LogoGreen />
+          <span>Supagate</span>
+        </a>
 
-      <ul className={`${styles.links} ${open ? styles.linksOpen : ''}`}>
-        {links.map(l => (
-          <li key={l.hash ?? l.href}>
-            {l.href ? (
-              <a
-                href={l.href}
-                className={isAboutPage ? styles.linkActive : ''}
-                onClick={() => setOpen(false)}
-              >
-                {l.label}
-              </a>
-            ) : (
-              <a
-                href={`#${l.hash}`}
-                className={active === l.hash ? styles.linkActive : ''}
-                onClick={e => goToHash(e, l.hash)}
-              >
-                {l.label}
-              </a>
-            )}
+        <ul id="main-menu" className={`${styles.links} ${open ? styles.linksOpen : ''}`}>
+          {links.map((l, i) => (
+            <li key={l.hash ?? l.href} style={{ '--i': i }}>
+              {l.href ? (
+                <a
+                  href={l.href}
+                  className={isAboutPage ? styles.linkActive : ''}
+                  aria-current={isAboutPage ? 'page' : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <a
+                  href={`#${l.hash}`}
+                  className={active === l.hash ? styles.linkActive : ''}
+                  onClick={e => goToHash(e, l.hash)}
+                >
+                  {l.label}
+                </a>
+              )}
+            </li>
+          ))}
+          <li className={styles.mobileCta} style={{ '--i': links.length }}>
+            <a href="#contact" className="btn btn-outline" onClick={e => goToHash(e, 'contact')}>Contact Us</a>
+            <AppLink onClick={() => setOpen(false)} />
           </li>
-        ))}
-      </ul>
+        </ul>
 
-      <div className={styles.cta}>
-        <a href="#contact" className="btn btn-outline" onClick={e => goToHash(e, 'contact')}>Contact Us</a>
-        <a href="/pilot" className="btn btn-primary">Join the Pilot</a>
-      </div>
+        <div className={styles.cta}>
+          <a href="#contact" className={styles.textLink} onClick={e => goToHash(e, 'contact')}>Contact Us</a>
+          <AppLink />
+        </div>
 
-      <button
-        className={`${styles.hamburger} ${open ? styles.hamburgerOpen : ''}`}
-        aria-label="Toggle menu"
-        onClick={() => setOpen(o => !o)}
-      >
-        <span /><span /><span />
-      </button>
-    </nav>
+        <button
+          className={`${styles.hamburger} ${open ? styles.hamburgerOpen : ''}`}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="main-menu"
+          onClick={() => setOpen(o => !o)}
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
+    </header>
   )
 }
