@@ -39,7 +39,7 @@ export default function Features() {
             <p>Control who enters and exits in real time. Residents issue one-time pass codes; security verifies them at the gate and every event lands in a full audit trail.</p>
           </div>
           <Phone
-            src="/play-screenshots/06-security-home.png"
+            src="/hero-crops/06-security-home.png"
             alt="Security app verifying a visitor pass code"
             className={styles.heroPhone}
           />
