@@ -6,19 +6,19 @@ const testimonials = [
   {
     quote: 'Since we deployed Supagate, our service charge collection rate jumped from 52% to 91% within three months. The automated reminders alone paid for the subscription.',
     name: 'Adeola Okonkwo',
-    role: 'Estate Manager, Lekki Gardens',
+    role: 'Estate Manager, Haj Estate',
     initials: 'AO',
   },
   {
     quote: 'I can let in my visitor from my office. No more calling the gateman, no more missed deliveries. The access code feature is incredibly convenient.',
     name: 'Chioma Ihejirika',
-    role: 'Resident, Chevron Estate',
+    role: 'Resident, MCourt Estate',
     initials: 'CI',
   },
   {
     quote: 'Our security team handles 200+ gate events daily. With Supagate, everything is logged automatically. Shift handovers now take 2 minutes instead of 20.',
     name: 'Yusuf Balogun',
-    role: 'Head of Security, GRA Phase 2',
+    role: 'Head of Security, Haj Estate',
     initials: 'YB',
   },
 ]

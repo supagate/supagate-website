@@ -1,5 +1,6 @@
 import Icon from './Icon'
 import Phone from './Phone'
+import WebScreen from './WebScreen'
 import CountUp from './CountUp'
 import StoreButton from './StoreButton'
 import styles from './Hero.module.css'
@@ -52,17 +53,18 @@ export default function Hero() {
         </div>
 
         <div className={styles.visual}>
-          <Phone
-            src="/play-screenshots/04-admin-security-list.png"
-            alt="Supagate admin view of the estate security team"
-            className={`${styles.phoneBack} ${styles.phoneEnter}`}
-            style={{ '--d': '420ms' }}
+          <WebScreen
+            src="/web-screenshots/overview.jpg"
+            alt="Supagate web dashboard with collections, outstanding dues and a monthly collections chart"
+            className={styles.web}
+            style={{ '--d': '120ms' }}
+            eager
           />
           <Phone
             src="/hero-crops/01-home.png"
             alt="Supagate admin home with balance overview, visitors today and quick actions"
             className={`${styles.phoneFront} ${styles.phoneEnter}`}
-            style={{ '--d': '260ms' }}
+            style={{ '--d': '380ms' }}
             eager
           />
 

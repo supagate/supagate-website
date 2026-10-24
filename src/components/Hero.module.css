@@ -131,22 +131,27 @@
   justify-content: center;
 }
 
-.phoneFront,
-.phoneBack {
+/* The web dashboard is the main visual, bleeding off the panel's edge;
+   the phone stands in front of its lower-left corner. */
+.web {
   position: absolute;
-  bottom: -110px;
+  z-index: 0;
+  top: 40px;
+  left: 4%;
+  width: 820px;
+  transform-origin: left center;
+  animation: web-rise 1200ms var(--ease-out) var(--d, 0ms) both;
 }
+@keyframes web-rise {
+  from { opacity: 0; transform: perspective(1600px) rotateX(14deg) translateY(70px); }
+}
+
 .phoneFront {
+  position: absolute;
   z-index: 2;
-  left: 50%;
-  transform: translateX(-62%);
-}
-.phoneBack {
-  z-index: 1;
-  left: 50%;
+  left: -6%;
   bottom: -150px;
-  transform: translateX(8%) rotate(7deg);
-  opacity: 0.92;
+  width: 230px;
 }
 
 .floatCard {
@@ -174,8 +179,8 @@
 }
 .floatCard small { font-size: 0.78rem; color: var(--sub); }
 
-.floatTop { top: 90px; left: -8px; }
-.floatBottom { bottom: 120px; right: -4px; }
+.floatTop { top: 0; right: 4%; }
+.floatBottom { top: 170px; left: -10%; }
 
 .floatIcon {
   display: grid;
@@ -212,8 +217,7 @@
 }
 
 @media (max-width: 1100px) {
-  .floatTop { left: -24px; }
-  .floatBottom { right: -24px; }
+  .web { width: 700px; }
 }
 
 @media (max-width: 960px) {
@@ -224,10 +228,10 @@
   }
   .content { padding-bottom: 48px; max-width: none; }
   .visual { height: 460px; }
-  .phoneFront { transform: translateX(-75%) scale(0.86); transform-origin: bottom center; bottom: -150px; }
-  .phoneBack { transform: translateX(-10%) rotate(7deg) scale(0.86); transform-origin: bottom center; bottom: -190px; }
-  .floatTop { top: 30px; left: 0; }
-  .floatBottom { bottom: 100px; right: 0; }
+  .web { top: 0; left: 12%; width: 680px; }
+  .phoneFront { left: 2%; width: 200px; bottom: -110px; }
+  .floatTop { top: -20px; right: 0; }
+  .floatBottom { top: auto; left: auto; bottom: 40px; right: 0; }
 }
 
 @media (max-width: 560px) {
@@ -242,6 +246,8 @@
   .stat dd { font-size: 1.35rem; }
   .stat dt { font-size: 0.75rem; }
   .content { padding-bottom: 24px; }
-  .visual { height: 360px; }
+  .visual { height: 340px; }
+  .web { top: 10px; left: 14%; width: 420px; }
+  .phoneFront { left: 0; width: 150px; bottom: -80px; }
   .floatCard { display: none; }
 }

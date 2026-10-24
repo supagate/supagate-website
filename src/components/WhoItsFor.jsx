@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Icon from './Icon'
 import Phone from './Phone'
+import WebScreen from './WebScreen'
 import AppLink from './AppLink'
 import styles from './WhoItsFor.module.css'
 
@@ -18,7 +19,11 @@ const personas = [
     ],
     screen: '/play-screenshots/02-residents.png',
     alt: 'Supagate admin residents directory',
-    chip: { icon: 'wallet', value: '₦4.2M', label: 'Dues collected this month' },
+    web: {
+      src: '/web-screenshots/residents.jpg',
+      alt: 'Supagate web dashboard residents list with join requests to approve',
+    },
+    chip: { icon: 'qr', value: 'Active', label: 'Guest access code valid' },
   },
   {
     id: 'resident',
@@ -33,7 +38,11 @@ const personas = [
     ],
     screen: '/play-screenshots/03-payment.png',
     alt: 'Supagate resident payments screen',
-    chip: { icon: 'qr', value: 'Active', label: 'Guest access code valid' },
+    web: {
+      src: '/web-screenshots/bills.jpg',
+      alt: 'Supagate web dashboard bills page with collected and outstanding totals and each bill’s progress',
+    },
+    chip: { icon: 'wallet', value: '₦4.2M', label: 'Dues collected this month' },
   },
   {
     id: 'security',
@@ -48,6 +57,10 @@ const personas = [
     ],
     screen: '/hero-crops/07-security-inout.png',
     alt: 'Supagate security in-out gate log',
+    web: {
+      src: '/web-screenshots/security.jpg',
+      alt: 'Supagate web dashboard security staff page with guards on duty and their shifts',
+    },
     chip: { icon: 'shield', value: '247', label: 'Verified entries today' },
   },
 ]
@@ -72,7 +85,8 @@ function Row({ p, reverse }) {
       </div>
 
       <div className={styles.visual}>
-        <div className={styles.stage}>
+        <div className={`${styles.stage} ${p.web ? styles.withWeb : ''}`}>
+          {p.web && <WebScreen {...p.web} className={styles.web} />}
           <Phone src={p.screen} alt={p.alt} className={styles.phone} />
           <div className={styles.chip} aria-hidden="true">
             <span className={styles.chipIcon}><Icon name={p.chip.icon} size={18} /></span>
