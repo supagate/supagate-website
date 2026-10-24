@@ -17,7 +17,7 @@ const personas = [
       'Real-time gate activity and security alerts',
       'Financial reports and outstanding dues tracking',
     ],
-    screen: '/play-screenshots/02-residents.png',
+    screen: '/hero-crops/02-residents.png',
     alt: 'Supagate admin residents directory',
     web: {
       src: '/web-screenshots/residents.jpg',
