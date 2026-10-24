@@ -36,7 +36,7 @@ const personas = [
       'Book shared amenities with live availability',
       'Receive estate announcements instantly',
     ],
-    screen: '/play-screenshots/03-payment.png',
+    screen: '/hero-crops/03-payment.png',
     alt: 'Supagate resident payments screen',
     web: {
       src: '/web-screenshots/bills.jpg',
