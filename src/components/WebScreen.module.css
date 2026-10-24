@@ -1,0 +1,25 @@
+/* A frosted bezel for dark backgrounds: the screen floats, no browser chrome. */
+.bezel {
+  padding: 10px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.18) inset,
+    0 50px 100px -40px rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.bezel img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1600 / 1000;
+  border-radius: 20px;
+  background: #f7f7f5;
+}
+
+@media (max-width: 560px) {
+  .bezel { padding: 6px; border-radius: 18px; }
+  .bezel img { border-radius: 13px; }
+}

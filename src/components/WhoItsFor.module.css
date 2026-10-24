@@ -85,8 +85,27 @@
   flex-shrink: 0;
 }
 
+/* Rows with a web screen, laid out like the hero: the web screen leads
+   and bleeds off the right, and the phone stands in front of its
+   lower-right corner, running off the bottom. */
+.web {
+  position: absolute;
+  top: 40px;
+  left: 28px;
+  width: 620px;
+}
+.withWeb .phone {
+  position: absolute;
+  z-index: 1;
+  right: 24px;
+  bottom: -130px;
+  width: 210px;
+  margin-top: 0;
+}
+
 .chip {
   position: absolute;
+  z-index: 2;
   left: 20px;
   bottom: 24px;
   display: flex;
@@ -143,5 +162,9 @@
   .row { padding: 28px 20px; border-radius: 22px; }
   .stage { height: 380px; }
   .phone { width: 210px; }
+  .web { top: 28px; left: 14px; width: 440px; }
+  .withWeb .phone { right: 14px; bottom: -110px; width: 160px; }
+  /* No room beside the phone: the chip moves to the top. */
+  .withWeb .chip { top: 14px; bottom: auto; left: 14px; transform-origin: left top; }
   .text :global(.btn) { width: 100%; }
 }
