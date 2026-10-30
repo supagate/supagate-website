@@ -1,55 +1,64 @@
-import { useEffect, useState } from 'react'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
-import styles from './Legal.module.css'
+import { useState } from 'react'
+import InviteLanding from '../components/InviteLanding'
 
-// Reaching this page at all means iOS/Android Universal/App Links didn't
-// intercept the request before the browser loaded it — either the
-// Supagate app isn't installed, or link verification hasn't completed on
-// this device yet. The `supagate://` redirect below is a best-effort
-// second attempt for the latter case; the static content is what most
-// visitors here will actually see.
+// An invite to set up an account: a resident added by their estate, an
+// admin, or a family member. Reaching this page means the Supagate app
+// didn't open the link itself (not installed yet, or the phone hasn't
+// verified the link), so InviteLanding tries the app again and shows how
+// to get it.
 export default function AcceptInvite() {
   const [token] = useState(
     () => new URLSearchParams(window.location.search).get('token'),
   )
 
-  useEffect(() => {
-    if (!token) return
-    window.location.href = `supagate://accept-invite?token=${encodeURIComponent(token)}`
-  }, [token])
+  if (!token) {
+    return (
+      <InviteLanding
+        eyebrow="Invite link"
+        title="This invite link is incomplete"
+        intro="Part of the link is missing, so we can't open your invite. Ask whoever invited you to send it again, then tap the new link on your phone."
+        steps={STEPS}
+        floatTitle="Invites last 7 days"
+        floatSub="Ask for a new one any time"
+      />
+    )
+  }
 
   return (
-    <>
-      <Nav />
-
-      <main className={styles.doc}>
-        {token ? (
-          <>
-            <h1>You've been invited to Supagate</h1>
-            <p>
-              Open this link on your phone with the Supagate app installed
-              to accept your invite and finish setting up your account.
-            </p>
-            <p>
-              If nothing happened automatically and you already have the
-              app installed, make sure you're opening this link directly
-              from your phone (not a forwarded message on desktop), then
-              try again.
-            </p>
-          </>
-        ) : (
-          <>
-            <h1>Invite link incomplete</h1>
-            <p>
-              This link is missing its invite code, so we can't process it.
-              Ask whoever invited you to resend the invite.
-            </p>
-          </>
-        )}
-      </main>
-
-      <Footer />
-    </>
+    <InviteLanding
+      eyebrow="You've been invited"
+      title="Set up your Supagate account"
+      intro="Your estate is on Supagate: gate access, visitors, bills and notices in one app. Get the app, then open this invite on your phone to set your password."
+      deepLink={`supagate://accept-invite?token=${encodeURIComponent(token)}`}
+      steps={STEPS}
+      help={HELP}
+      floatTitle="Invite ready"
+      floatSub="Set a password to finish"
+    />
   )
 }
+
+const STEPS = [
+  {
+    title: 'Get the app',
+    body: 'Download Supagate free from the App Store or Google Play.',
+  },
+  {
+    title: 'Open your invite',
+    body: 'Come back to your invite email on your phone and tap the link again. It opens in the app.',
+  },
+  {
+    title: 'Set your password',
+    body: 'Your email is already filled in. Choose a password to finish setting up.',
+  },
+  {
+    title: "You're in",
+    body: 'See your gate access code, invite guests and keep up with your estate.',
+  },
+]
+
+const HELP = [
+  'Invite links work for 7 days. If yours has expired, ask whoever invited you to resend it.',
+  "Open the link on the phone you'll use Supagate on, not a forwarded copy on a computer.",
+  'Already set up your account? Sign in to the app with the same email.',
+]

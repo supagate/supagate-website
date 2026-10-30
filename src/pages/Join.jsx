@@ -1,55 +1,63 @@
-import { useEffect, useState } from 'react'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
-import styles from './Legal.module.css'
+import { useState } from 'react'
+import InviteLanding from '../components/InviteLanding'
 
-// Reaching this page at all means iOS/Android Universal/App Links didn't
-// intercept the request before the browser loaded it — either the
-// Supagate app isn't installed, or link verification hasn't completed on
-// this device yet. The `supagate://` redirect below is a best-effort
-// second attempt for the latter case; the static content is what most
-// visitors here will actually see.
+// An estate's join link, shared by its admins for residents to request a
+// place. Reaching this page means the Supagate app didn't open the link
+// itself, so InviteLanding tries the app again and shows how to get it.
 export default function Join() {
   const [code] = useState(
     () => new URLSearchParams(window.location.search).get('code'),
   )
 
-  useEffect(() => {
-    if (!code) return
-    window.location.href = `supagate://join?code=${encodeURIComponent(code)}`
-  }, [code])
+  if (!code) {
+    return (
+      <InviteLanding
+        eyebrow="Join link"
+        title="This join link is incomplete"
+        intro="Part of the link is missing, so we can't tell which estate it's for. Ask your estate admin to share the join link again, then tap it on your phone."
+        steps={STEPS}
+        floatTitle="Need the link?"
+        floatSub="Your estate admin can share it"
+      />
+    )
+  }
 
   return (
-    <>
-      <Nav />
-
-      <main className={styles.doc}>
-        {code ? (
-          <>
-            <h1>Join your estate on Supagate</h1>
-            <p>
-              Open this link on your phone with the Supagate app installed
-              to join your estate using this invite code.
-            </p>
-            <p>
-              If nothing happened automatically and you already have the
-              app installed, make sure you're opening this link directly
-              from your phone (not a forwarded message on desktop), then
-              try again.
-            </p>
-          </>
-        ) : (
-          <>
-            <h1>Join link incomplete</h1>
-            <p>
-              This link is missing its invite code, so we can't process it.
-              Ask your estate administrator to resend the join link.
-            </p>
-          </>
-        )}
-      </main>
-
-      <Footer />
-    </>
+    <InviteLanding
+      eyebrow="Join your estate"
+      title="Your estate is on Supagate"
+      intro="Gate access, visitor passes, bills and estate notices, all from your phone. Get the app, then open this link on your phone to request your place."
+      deepLink={`supagate://join?code=${encodeURIComponent(code)}`}
+      chip={`Estate code: ${code}`}
+      steps={STEPS}
+      help={HELP}
+      floatTitle="Request sent"
+      floatSub="Your estate admin approves it"
+    />
   )
 }
+
+const STEPS = [
+  {
+    title: 'Get the app',
+    body: 'Download Supagate free from the App Store or Google Play.',
+  },
+  {
+    title: 'Open this link',
+    body: 'Tap this join link again on your phone. The app opens with your estate already chosen.',
+  },
+  {
+    title: 'Add your home',
+    body: 'Create your account, or sign in, and tell us your house and block.',
+  },
+  {
+    title: 'Get approved',
+    body: "Your estate admin approves your request. We'll notify you, and you're in.",
+  },
+]
+
+const HELP = [
+  "Open the link on the phone you'll use Supagate on, not a forwarded copy on a computer.",
+  'If the app is installed but the link still opens here, tap Open in the Supagate app above.',
+  'Already a resident? Just sign in to the app; there is nothing to join again.',
+]
