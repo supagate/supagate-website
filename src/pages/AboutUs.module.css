@@ -77,6 +77,23 @@
   margin-bottom: 16px;
 }
 
+.vm { display: grid; gap: 16px; }
+.vm > div {
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+.vm dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.vm dd { color: var(--title); font-size: 1.05rem; line-height: 1.6; font-weight: 500; }
+
 @media (max-width: 800px) {
   .storyGrid { grid-template-columns: 1fr; gap: 24px; }
 }

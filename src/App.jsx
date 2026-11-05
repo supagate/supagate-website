@@ -2,15 +2,21 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import TrustBar from './components/TrustBar'
-import Features from './components/Features'
+import Intro from './components/Intro'
 import WhoItsFor from './components/WhoItsFor'
+import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
-import Stats from './components/Stats'
+import DayWithSupagate from './components/DayWithSupagate'
+import WhySupagate from './components/WhySupagate'
 import Testimonials from './components/Testimonials'
+import PartnerCta from './components/PartnerCta'
 import Faq from './components/Faq'
 import CtaSection from './components/CtaSection'
 import Footer from './components/Footer'
 
+// Section order follows the content restructuring brief: promise → what it
+// is → who it serves → solutions → how → a day in the life → why → proof →
+// demo/partner CTA → FAQs → final CTA.
 export default function App() {
   return (
     <>
@@ -18,11 +24,14 @@ export default function App() {
       <main>
         <Hero />
         <TrustBar />
-        <Features />
+        <Intro />
         <WhoItsFor />
+        <Features />
         <HowItWorks />
+        <DayWithSupagate />
+        <WhySupagate />
         <Testimonials />
-        <Stats />
+        <PartnerCta />
         <Faq />
         <CtaSection />
       </main>

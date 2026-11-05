@@ -47,9 +47,9 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className={styles.section}>
       <div ref={headerRef} className="section-header-center aos">
-        <div className="section-label">Testimonials</div>
-        <h2 className="section-title">Hear what estates say about Supagate</h2>
-        <p className="section-sub">Administrators, residents, and security teams on what changed after moving their estate onto Supagate.</p>
+        <div className="section-label">From Our Communities</div>
+        <h2 className="section-title">What residents and estate teams say</h2>
+        <p className="section-sub">Estate managers, residents and security teams on how everyday community life changed with Supagate.</p>
       </div>
       <div className={styles.grid}>
         {testimonials.map((t, i) => (

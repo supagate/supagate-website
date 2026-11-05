@@ -1,30 +1,31 @@
 import LogoWhite from './LogoWhite'
 import Icon from './Icon'
+import { CONTACT } from '../lib/contact'
+import { SOLUTIONS } from '../lib/sitemap'
 import styles from './Footer.module.css'
 
 const cols = [
   {
     heading: 'Product',
     links: [
-      { href: '/#features',     label: 'Features' },
+      { href: '/#who',          label: 'Features' },
       { href: '/#how-it-works', label: 'How It Works' },
+      { href: '/#a-day',        label: 'A Day with Supagate' },
       { href: '/#faq',          label: 'FAQs' },
       { href: '/#download',     label: 'Download the App' },
     ],
   },
   {
     heading: 'Solutions',
-    links: [
-      { href: '/#for-admin',    label: 'Estate Administrators' },
-      { href: '/#for-resident', label: 'Residents' },
-      { href: '/#for-security', label: 'Security Teams' },
-    ],
+    links: SOLUTIONS.map(s => ({ href: s.href, label: s.label })),
   },
   {
     heading: 'Company',
     links: [
-      { href: '/about', label: 'About Us' },
-      { href: 'mailto:hello@supagate.co', label: 'Contact' },
+      { href: '/about',          label: 'About Us' },
+      { href: CONTACT.page,      label: 'Contact Us' },
+      { href: CONTACT.demo,      label: 'Book a Demo' },
+      { href: CONTACT.support,   label: 'Support' },
       { href: '/delete-account', label: 'Delete Account' },
     ],
   },
@@ -47,8 +48,8 @@ export default function Footer() {
               <LogoWhite width={28} height={32} />
               <span>Supagate</span>
             </a>
-            <p>The all-in-one estate management platform built for Nigerian gated communities. Smarter living, safer estates.</p>
-            <a href="mailto:hello@supagate.co" className={styles.email}>
+            <p>Making residential living work better. Smarter communities, safer living and better everyday experiences in the places we call home.</p>
+            <a href={CONTACT.email} className={styles.email}>
               <Icon name="mail" size={18} /> hello@supagate.co
             </a>
           </div>

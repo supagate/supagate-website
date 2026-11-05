@@ -1,14 +1,15 @@
 import Icon from './Icon'
 import Phone from './Phone'
 import WebScreen from './WebScreen'
-import CountUp from './CountUp'
-import StoreButton from './StoreButton'
+import AppLink from './AppLink'
+import { CONTACT } from '../lib/contact'
 import styles from './Hero.module.css'
 
-const stats = [
-  { value: '500+',  label: 'Estates onboarded' },
-  { value: '20K+',  label: 'Active residents' },
-  { value: '99.9%', label: 'Uptime SLA' },
+const audiences = [
+  { icon: 'home',      label: 'Residents' },
+  { icon: 'clipboard', label: 'Estate managers' },
+  { icon: 'shield',    label: 'Security teams' },
+  { icon: 'wrench',    label: 'Service providers' },
 ]
 
 export default function Hero() {
@@ -18,38 +19,33 @@ export default function Hero() {
         <div className={styles.glow} aria-hidden="true" />
 
         <div className={styles.content}>
-          <a href="#download" className={`${styles.badge} enter`}>
+          <p className={`${styles.badge} enter`}>
             <span className={styles.dot} />
-            Now live on iOS and Android
-            <Icon name="arrowRight" size={16} />
-          </a>
+            Smarter Communities. Safer Living. Better Everyday Experiences.
+          </p>
 
           <h1 className={`${styles.heading} enter`} style={{ '--d': '90ms' }}>
-            Your estate, <span className={styles.highlight}>fully in control.</span>
+            A better way to experience <span className={styles.highlight}>residential living.</span>
           </h1>
 
           <p className={`${styles.sub} enter`} style={{ '--d': '180ms' }}>
-            Supagate brings residents, security, and administrators onto one
-            platform. Manage gate access, collect dues, book amenities, and
-            keep everyone informed from your phone.
+            Supagate connects residents, estate managers, security teams and
+            trusted service providers on one easy-to-use platform, making
+            everyday community living more convenient, organised and secure.
           </p>
 
           <div className={`${styles.actions} enter`} style={{ '--d': '270ms' }}>
-            <StoreButton store="apple" light />
-            <StoreButton store="play" light />
-            <a href="#how-it-works" className={`btn btn-ghost-white btn-lg ${styles.howLink}`}>
-              See how it works
+            <AppLink className="btn btn-lime btn-lg" />
+            <a href={CONTACT.demo} className="btn btn-ghost-white btn-lg">
+              Book a Demo
             </a>
           </div>
 
-          <dl className={`${styles.stats} enter`} style={{ '--d': '360ms' }}>
-            {stats.map(s => (
-              <div key={s.label} className={styles.stat}>
-                <dt>{s.label}</dt>
-                <dd><CountUp value={s.value} /></dd>
-              </div>
+          <ul className={`${styles.audiences} enter`} style={{ '--d': '360ms' }} aria-label="Who Supagate is for">
+            {audiences.map(a => (
+              <li key={a.label}><Icon name={a.icon} size={16} />{a.label}</li>
             ))}
-          </dl>
+          </ul>
         </div>
 
         <div className={styles.visual}>
@@ -57,30 +53,30 @@ export default function Hero() {
             src="/web-screenshots/overview.jpg"
             alt="Supagate web dashboard with collections, outstanding dues and a monthly collections chart"
             className={styles.web}
-            style={{ '--d': '120ms' }}
+            style={{ '--d': '300ms' }}
             eager
           />
           <Phone
             src="/hero-crops/01-home.png"
-            alt="Supagate admin home with balance overview, visitors today and quick actions"
-            className={`${styles.phoneFront} ${styles.phoneEnter}`}
-            style={{ '--d': '380ms' }}
+            alt="Supagate home screen with balance overview, visitors today and quick actions"
+            className={`${styles.phone} ${styles.phoneEnter}`}
+            style={{ '--d': '520ms' }}
             eager
           />
 
-          <div className={`${styles.floatCard} ${styles.floatTop}`} style={{ '--d': '900ms' }} aria-hidden="true">
+          <div className={`${styles.floatCard} ${styles.floatRight}`} style={{ '--d': '1000ms' }} aria-hidden="true">
             <span className={styles.floatIcon}><Icon name="shield" size={20} /></span>
             <span>
-              <strong>Visitor approved</strong>
-              <small>Gate 2 · just now</small>
+              <strong>Your guest has arrived</strong>
+              <small>Verified at the gate · just now</small>
             </span>
           </div>
 
-          <div className={`${styles.floatCard} ${styles.floatBottom}`} style={{ '--d': '1100ms' }} aria-hidden="true">
-            <span className={`${styles.floatIcon} ${styles.floatIconLime}`}><Icon name="wallet" size={20} /></span>
+          <div className={`${styles.floatCard} ${styles.floatLeft}`} style={{ '--d': '1200ms' }} aria-hidden="true">
+            <span className={`${styles.floatIcon} ${styles.floatIconLime}`}><Icon name="bell" size={20} /></span>
             <span>
-              <strong>Service charge paid</strong>
-              <small>Receipt sent to resident</small>
+              <strong>Water maintenance on Friday</strong>
+              <small>Update from your estate</small>
             </span>
           </div>
         </div>

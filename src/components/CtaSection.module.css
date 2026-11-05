@@ -61,6 +61,7 @@
   max-width: 520px;
 }
 
+.primary { margin-bottom: 14px; }
 .actions {
   display: flex;
   flex-wrap: wrap;

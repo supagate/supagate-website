@@ -2,6 +2,15 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/pilot", "destination": "/#download", "permanent": true }
+    {
+      "source": "/pilot",
+      "destination": "/#download",
+      "permanent": true
+    },
+    {
+      "source": "/features",
+      "destination": "/#who",
+      "permanent": true
+    }
   ]
 }

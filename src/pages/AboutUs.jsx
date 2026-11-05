@@ -1,5 +1,4 @@
 import Nav from '../components/Nav'
-import Stats from '../components/Stats'
 import CtaSection from '../components/CtaSection'
 import Footer from '../components/Footer'
 import Icon from '../components/Icon'
@@ -8,24 +7,24 @@ import styles from './AboutUs.module.css'
 
 const values = [
   {
-    icon: 'shield',
-    title: 'Security first',
-    desc: 'Gate access and resident data are handled with the same care we\'d want for our own homes — every feature is built around trust.',
-  },
-  {
-    icon: 'building',
-    title: 'Built for Nigeria',
-    desc: 'From Paystack payments to how estates actually run day to day, Supagate is designed around the realities of Nigerian gated communities.',
+    icon: 'home',
+    title: 'Living, not just managing',
+    desc: 'A good residential experience goes beyond a beautiful home. We design for how it feels to live in a community, not only how it is administered.',
   },
   {
     icon: 'users',
-    title: 'Community first',
-    desc: 'Residents, security teams, and administrators are all part of the same community — the product is built to serve all three, not just one.',
+    title: 'Everyone plays a part',
+    desc: 'Residents, estate managers, security personnel and service providers each have a role. Supagate is built to serve all of them, together.',
   },
   {
-    icon: 'sparkle',
-    title: 'Simplicity over noise',
-    desc: 'No clutter, no confusing dashboards. Just the tools an estate actually needs to run smoothly, in one place.',
+    icon: 'shield',
+    title: 'Trust you can see',
+    desc: 'Clear procedures, accountable records and plain-language privacy practices. We earn trust by being open about how things work.',
+  },
+  {
+    icon: 'building',
+    title: 'For every managed community',
+    desc: 'Gated estates, apartment blocks and residential developments of every size and budget, not only luxury estates.',
   },
 ]
 
@@ -52,22 +51,19 @@ export default function AboutUs() {
       <section className={styles.intro}>
         <div ref={introRef} className="section-header-center aos">
           <div className="section-label">About Us</div>
-          <h1 className="section-title">Smarter, safer estate living — for everyone inside the gate</h1>
+          <h1 className="section-title">Making residential living work better</h1>
           <p className={`section-sub ${styles.sub}`}>
-            Supagate is the all-in-one platform for Nigerian gated
-            communities — bringing residents, security teams, and
-            administrators onto one app to manage gate access, dues,
-            amenities, and community life.
+            Supagate is a smart residential community platform designed to
+            improve the everyday experience of living in managed residential
+            communities.
           </p>
         </div>
       </section>
 
       <div className={styles.mission}>
         <p>
-          "Our mission is to replace the paper logbooks, WhatsApp groups,
-          and guesswork that estates run on with one simple, reliable
-          platform — so every estate feels safer and every resident feels
-          at home."
+          "Our goal is to make residential communities more organised,
+          responsive, convenient and connected, one community at a time."
         </p>
       </div>
 
@@ -77,20 +73,29 @@ export default function AboutUs() {
           <h2 className="section-title">Why we built Supagate</h2>
         </div>
         <div className={styles.storyGrid}>
-          <p>
-            Gated estates across Nigeria run on a patchwork of paper
-            visitor logs, security walkie-talkies, and WhatsApp groups for
-            everything from dues collection to emergency alerts. It works,
-            until it doesn't — a lost logbook, an unpaid service charge no
-            one can track, a visitor no one can verify.
-          </p>
-          <p>
-            Supagate exists to bring that patchwork onto one platform:
-            gate access residents and security can trust, payments
-            residents can track, and communication that reaches everyone
-            without the noise. We're building the estate management system
-            we wished existed — one estate at a time.
-          </p>
+          <div>
+            <p>
+              We believe that a good residential experience goes beyond having
+              a beautiful home. It also means feeling secure, receiving timely
+              information, accessing reliable services and knowing that the
+              community around you is well coordinated.
+            </p>
+            <p>
+              That is why we bring residents, estate managers, security
+              personnel and service providers together through one connected
+              platform.
+            </p>
+          </div>
+          <dl className={styles.vm}>
+            <div>
+              <dt>Our Vision</dt>
+              <dd>To become a trusted platform for smarter, safer and better-connected residential communities.</dd>
+            </div>
+            <div>
+              <dt>Our Mission</dt>
+              <dd>To simplify everyday community living through accessible technology that improves convenience, communication, security procedures and service coordination.</dd>
+            </div>
+          </dl>
         </div>
       </section>
 
@@ -106,7 +111,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <Stats />
       <CtaSection />
       <Footer />
     </>

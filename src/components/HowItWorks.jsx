@@ -2,10 +2,10 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import styles from './HowItWorks.module.css'
 
 const steps = [
-  { n: '01', title: 'Create your estate', desc: 'Sign up and set up your estate profile. Add your blocks, units, and amenities in a few taps.' },
-  { n: '02', title: 'Invite residents',   desc: 'Send invite links to residents. They download the app and join their unit in seconds.' },
-  { n: '03', title: 'Activate security',  desc: 'Onboard your security team. They log and manage every gate event, live.' },
-  { n: '04', title: 'Run everything',     desc: 'Collect dues, approve visitors, post notices, and track activity from one dashboard.' },
+  { n: '01', title: 'Register your community', desc: 'Your estate or property management team gets started with Supagate.' },
+  { n: '02', title: 'Set up your community',   desc: 'Configure residents, units, access procedures and the community information that matters to you.' },
+  { n: '03', title: 'Invite residents and teams', desc: 'Residents and authorised security personnel are invited to join the platform.' },
+  { n: '04', title: 'Enjoy a more connected experience', desc: 'Manage everyday activities, communication, payments and services from one place.' },
 ]
 
 function Step({ n, title, desc, delay }) {
@@ -27,9 +27,9 @@ export default function HowItWorks() {
         <div ref={headerRef} className={`${styles.header} aos`}>
           <div>
             <div className="section-label">How It Works</div>
-            <h2 className="section-title">Up and running in minutes</h2>
+            <h2 className="section-title">Getting your community connected is simple</h2>
           </div>
-          <p className="section-sub">Getting your estate on Supagate is simple. No long onboarding, no IT team required.</p>
+          <p className="section-sub">Four steps from first conversation to a community that runs better every day.</p>
         </div>
         <ol className={styles.grid}>
           {steps.map((s, i) => (
