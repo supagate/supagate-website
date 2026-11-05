@@ -31,12 +31,13 @@ const cols = [
   },
 ]
 
+// Only accounts with an href are shown. Add the link to bring one back.
 const socials = [
+  { icon: 'instagram', aria: 'Supagate on Instagram', href: 'https://www.instagram.com/supagate.co/' },
   { icon: 'x',         aria: 'Supagate on X' },
-  { icon: 'instagram', aria: 'Supagate on Instagram' },
   { icon: 'linkedin',  aria: 'Supagate on LinkedIn' },
   { icon: 'facebook',  aria: 'Supagate on Facebook' },
-]
+].filter(s => s.href)
 
 export default function Footer() {
   return (
@@ -77,7 +78,7 @@ export default function Footer() {
           </div>
           <div className={styles.socials}>
             {socials.map(s => (
-              <a key={s.icon} href="#" className={styles.socialLink} aria-label={s.aria}>
+              <a key={s.icon} href={s.href} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={s.aria}>
                 <Icon name={s.icon} size={18} />
               </a>
             ))}
