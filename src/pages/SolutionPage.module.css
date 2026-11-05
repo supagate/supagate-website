@@ -1,0 +1,115 @@
+/* ── Benefits ── */
+.benefits { background: var(--white); }
+
+.benefitGrid {
+  list-style: none;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.benefit {
+  padding: 30px 28px;
+  border-radius: var(--radius);
+  background: var(--cream);
+  border: 1px solid var(--line);
+}
+.benefit h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 20px 0 8px;
+}
+.benefit p { color: var(--sub); font-size: 0.96rem; line-height: 1.65; }
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+/* ── Steps ── */
+.steps {
+  background:
+    radial-gradient(rgba(195,240,122,0.06) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    var(--ink);
+}
+.inner { max-width: var(--max); margin: 0 auto; }
+.stepGrid {
+  list-style: none;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.step {
+  padding: 30px 26px;
+  border-radius: var(--radius);
+  background: var(--ink-2);
+  border: 1px solid var(--line-ink);
+}
+.number {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--lime);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.step h3 { color: var(--white); font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+.step p { color: var(--on-ink-sub); font-size: 0.95rem; line-height: 1.65; }
+
+/* ── Other audiences ── */
+.others { background: var(--cream); }
+.otherGrid {
+  list-style: none;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.other {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 24px 24px 56px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: border-color var(--dur-base) ease, transform var(--dur-base) var(--ease-out);
+}
+.other:hover { border-color: rgba(0,148,68,0.35); transform: translateY(-3px); }
+.other .icon { margin-bottom: 12px; background: var(--green-pale); border-color: transparent; }
+.other strong { font-family: var(--font-display); color: var(--ink); font-size: 1.02rem; }
+.other small { color: var(--sub); font-size: 0.9rem; line-height: 1.5; }
+.arrow { position: absolute; left: 24px; bottom: 22px; color: var(--primary); transition: translate var(--dur-base) var(--ease-out); }
+.other:hover .arrow { translate: 4px 0; }
+
+@media (max-width: 1024px) {
+  .four, .stepGrid, .otherGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .benefitGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .three { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .benefitGrid, .four, .stepGrid, .otherGrid { grid-template-columns: 1fr; }
+}

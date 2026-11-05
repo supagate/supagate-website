@@ -168,3 +168,5 @@
   .withWeb .chip { top: 14px; bottom: auto; left: 14px; transform-origin: left top; }
   .text :global(.btn) { width: 100%; }
 }
+
+.text :global(.btn) { white-space: normal; text-align: left; }

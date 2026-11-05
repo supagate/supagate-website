@@ -1,0 +1,117 @@
+.section { background: var(--white); }
+
+.grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.routes { list-style: none; display: grid; gap: 12px; }
+.route {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+}
+.route strong { font-family: var(--font-display); color: var(--ink); font-size: 1rem; }
+.route p { color: var(--sub); font-size: 0.92rem; margin: 2px 0 8px; }
+.route a, .direct a, .note a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+.route a:hover, .direct a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--line);
+}
+
+.direct { margin-top: 24px; padding: 0 4px; }
+.direct > p:first-child { color: var(--sub); font-size: 0.9rem; margin-bottom: 4px; }
+.direct > a { font-size: 1.05rem; }
+.faqLink { margin-top: 16px; color: var(--sub); font-size: 0.92rem; }
+.faqLink a { display: inline; font-size: inherit; }
+
+.form {
+  position: sticky;
+  top: 100px;
+  padding: 40px;
+  border-radius: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -36px rgba(10,36,24,0.35);
+  scroll-margin-top: 100px;
+}
+.form h2 { font-size: 1.6rem; letter-spacing: -0.02em; margin-bottom: 6px; }
+.formSub { color: var(--sub); margin-bottom: 28px; }
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.full { grid-column: 1 / -1; }
+.fields label { display: grid; gap: 6px; }
+.fields label > span { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+.fields label small { font-weight: 400; color: var(--sub); }
+.fields input, .fields select, .fields textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(10,36,24,0.16);
+  border-radius: 12px;
+  background: var(--white);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+.fields textarea { resize: vertical; }
+.fields input:focus, .fields select:focus, .fields textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0,148,68,0.14);
+}
+
+.form :global(.btn) { width: 100%; }
+.note { margin-top: 14px; font-size: 0.85rem; color: var(--sub); text-align: center; }
+.note a { display: inline; font-size: inherit; }
+.error { color: #A3361F; }
+
+/* Honeypot field, kept out of sight and out of the tab order. */
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.sent { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.sent .formSub { max-width: 34ch; }
+.sentIcon {
+  display: grid; place-items: center;
+  width: 56px; height: 56px; margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--green-pale); color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .form { position: static; order: -1; }
+}
+@media (max-width: 560px) {
+  .form { padding: 26px 20px; border-radius: 22px; }
+  .fields { grid-template-columns: 1fr; }
+}

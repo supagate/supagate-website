@@ -2,66 +2,82 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Icon from './Icon'
 import Phone from './Phone'
 import WebScreen from './WebScreen'
-import AppLink from './AppLink'
+import { CONTACT } from '../lib/contact'
 import styles from './WhoItsFor.module.css'
 
 const personas = [
   {
-    id: 'admin',
-    eyebrow: 'Supagate for Estate Administrators',
-    heading: 'Run your estate like a CEO',
-    desc: 'A command center for administrators. Track payments, manage residents, configure amenities, and resolve issues without a single phone call.',
+    id: 'resident',
+    eyebrow: 'For Residents',
+    heading: 'Feel more connected to where you live',
+    desc: 'Your home should be a place of comfort, convenience and peace of mind. Supagate helps you manage everyday residential activities without unnecessary stress.',
     features: [
-      'Full resident directory with unit assignments',
-      'Automated service charge collection and receipts',
-      'Real-time gate activity and security alerts',
-      'Financial reports and outstanding dues tracking',
+      'Welcome your guests with digital visitor passes',
+      'Get notified when visitors arrive at the gate',
+      'Know what you owe, pay conveniently and keep your records',
+      'Raise concerns and follow up without chasing multiple people',
+      'Stay informed about what matters in your community',
+    ],
+    screen: '/hero-crops/13-resident-home.png',
+    alt: 'Supagate resident home with outstanding payments, an unpaid bill reminder and an estate alert',
+    chip: { icon: 'qr', value: 'Guest pass sent', label: 'Valid for today’s visit' },
+    cta: { href: '#download', label: 'Explore the Resident Experience' },
+  },
+  {
+    id: 'admin',
+    eyebrow: 'For Estate Managers and Administrators',
+    heading: 'Manage your community with greater clarity and control',
+    desc: 'Coordinating people, payments, security, maintenance and shared facilities through scattered records is hard to keep track of. Supagate gives you one central place to run it all.',
+    features: [
+      'Resident, unit and property records',
+      'Community billing and payment tracking',
+      'Announcements, maintenance requests and complaints',
+      'Facility reservations, visitor activity and access records',
+      'Financial and community activity reports',
     ],
     screen: '/hero-crops/02-residents.png',
-    alt: 'Supagate admin residents directory',
+    alt: 'Supagate residents directory on mobile',
     web: {
       src: '/web-screenshots/residents.jpg',
       alt: 'Supagate web dashboard residents list with join requests to approve',
     },
-    chip: { icon: 'qr', value: 'Active', label: 'Guest access code valid' },
-  },
-  {
-    id: 'resident',
-    eyebrow: 'Supagate for Residents',
-    heading: 'Live smarter, stress less',
-    desc: 'Your digital companion at home. Invite guests, pay your bills, and stay connected with your estate community.',
-    features: [
-      'Generate one-time visitor access codes',
-      'Pay service charges and utilities in-app',
-      'Book shared amenities with live availability',
-      'Receive estate announcements instantly',
-    ],
-    screen: '/hero-crops/03-payment.png',
-    alt: 'Supagate resident payments screen',
-    web: {
-      src: '/web-screenshots/bills.jpg',
-      alt: 'Supagate web dashboard bills page with collected and outstanding totals and each bill’s progress',
-    },
-    chip: { icon: 'wallet', value: '₦4.2M', label: 'Dues collected this month' },
+    chip: { icon: 'clipboard', value: 'Records in order', label: 'Payments, visitors and requests' },
+    cta: { href: CONTACT.estateDemo, label: 'Request an Estate Management Demo' },
   },
   {
     id: 'security',
-    eyebrow: 'Supagate for Security Teams',
-    heading: 'Guard smarter, not harder',
-    desc: 'A purpose-built mobile interface for managing gate access, logging incidents, and reaching residents and admin in real time.',
+    eyebrow: 'For Security Teams',
+    heading: 'Clearer procedures. More organised access. Better accountability.',
+    desc: 'Security personnel keep communities safe and orderly. Supagate supports their work with digital visitor verification, access records and better communication with residents and management, reducing dependence on manual logbooks.',
     features: [
-      'Verify visitor pass codes and QR tokens',
-      'Log every entry and exit with timestamps',
-      'Raise and escalate security alerts',
-      'Shift handover logs and duty records',
+      'Verify visitor passes and confirm authorised access',
+      'Record every entry and exit electronically',
+      'Reach residents and estate management quickly',
+      'Keep organised duty and shift records',
     ],
     screen: '/hero-crops/07-security-inout.png',
-    alt: 'Supagate security in-out gate log',
+    alt: 'Supagate security in-out log with today’s entries and exits',
     web: {
       src: '/web-screenshots/security.jpg',
-      alt: 'Supagate web dashboard security staff page with guards on duty and their shifts',
+      alt: 'Supagate web gate log listing every visitor let in or out today',
     },
-    chip: { icon: 'shield', value: '247', label: 'Verified entries today' },
+    chip: { icon: 'shield', value: 'Entry recorded', label: 'Gate 1 · 8:42 am' },
+    cta: { href: '#features', label: 'Discover Security Management Features' },
+  },
+  {
+    id: 'provider',
+    eyebrow: 'For Service Providers',
+    heading: 'Connect with more customers within residential communities',
+    desc: 'Are you a plumber, electrician, cleaner, technician or other service professional? Supagate helps you become more visible to residents looking for everyday services.',
+    features: [
+      'Be listed where residents look for help',
+      'Receive service enquiries and bookings',
+      'Build lasting relationships within managed communities',
+    ],
+    screen: '/hero-crops/08-services.png',
+    alt: 'Supagate services screen listing plumbers, electricians, cleaners and other providers',
+    chip: { icon: 'handshake', value: 'New enquiry', label: 'Plumbing · Block C' },
+    cta: { href: CONTACT.provider, label: 'Join as a Service Provider' },
   },
 ]
 
@@ -81,7 +97,9 @@ function Row({ p, reverse }) {
             </li>
           ))}
         </ul>
-        <AppLink />
+        <a href={p.cta.href} className="btn btn-dark">
+          {p.cta.label} <Icon name="arrowRight" size={18} />
+        </a>
       </div>
 
       <div className={styles.visual}>
@@ -106,9 +124,9 @@ export default function WhoItsFor() {
   return (
     <section className={styles.section} id="who">
       <div ref={headerRef} className="section-header-center aos">
-        <div className="section-label">Who It's For</div>
-        <h2 className="section-title">Built for everyone inside the gate</h2>
-        <p className="section-sub">One platform, three tailored experiences. Everyone gets the tools they need and nothing they don't.</p>
+        <div className="section-label">Who Supagate Serves</div>
+        <h2 className="section-title">One community. Different needs. One connected solution.</h2>
+        <p className="section-sub">Residents, estate managers, security teams and service providers each get the tools they need, working together on one platform.</p>
       </div>
 
       <div className={styles.rows}>

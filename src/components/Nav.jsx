@@ -1,94 +1,144 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import LogoGreen from './LogoGreen'
 import AppLink from './AppLink'
+import Icon from './Icon'
+import { CONTACT } from '../lib/contact'
+import { SOLUTIONS } from '../lib/sitemap'
 import styles from './Nav.module.css'
 
-const links = [
-  { hash: 'features', label: 'Features' },
-  { hash: 'who', label: 'Who It\'s For' },
-  { hash: 'how-it-works', label: 'How It Works' },
-  { hash: 'faq', label: 'FAQs' },
-  { href: '/about', label: 'About Us' },
+const items = [
+  { id: 'solutions', label: 'Solutions', menu: SOLUTIONS, match: SOLUTIONS.map(s => s.href) },
+  { href: '/#who', label: 'Features' },
+  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/about', label: 'About Us', match: ['/about'] },
+  { href: '/contact', label: 'Contact Us', match: ['/contact'] },
 ]
+
+const path = () => window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/'
+
+function Dropdown({ item, open, onToggle, onClose, active }) {
+  return (
+    <li
+      className={styles.dropItem}
+      onMouseEnter={() => window.matchMedia('(hover: hover) and (min-width: 961px)').matches && onToggle(true)}
+      onMouseLeave={() => window.matchMedia('(hover: hover) and (min-width: 961px)').matches && onToggle(false)}
+    >
+      <button
+        type="button"
+        className={`${styles.dropBtn} ${active ? styles.linkActive : ''}`}
+        aria-expanded={open}
+        aria-controls={`menu-${item.id}`}
+        onClick={() => onToggle(!open)}
+      >
+        {item.label}
+        <svg className={styles.caret} width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M3 4.5 6 7.5l3-3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      <div id={`menu-${item.id}`} className={`${styles.panel} ${open ? styles.panelOpen : ''}`}>
+        <ul className={styles.panelGrid}>
+          {item.menu.map(m => (
+            <li key={m.href}>
+              <a href={m.href} className={styles.panelLink} onClick={onClose}>
+                <span className={styles.panelIcon}><Icon name={m.icon} size={18} /></span>
+                <span>
+                  <strong>{m.label}</strong>
+                  <small>{m.desc}</small>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {item.all && (
+          <a href={item.all.href} className={styles.panelAll} onClick={onClose}>
+            {item.all.label} <Icon name="arrowRight" size={16} />
+          </a>
+        )}
+      </div>
+    </li>
+  )
+}
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('')
+  const [menu, setMenu] = useState(null)
   const [scrolled, setScrolled] = useState(false)
+  const navRef = useRef(null)
+  const current = path()
+
+  // Sections render after load, so the browser can't find /#who on its
+  // own when arriving from another page: scroll to it once it exists.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1))
+    if (!id) return
+    const jump = () => document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
+    const t = setTimeout(jump, 60)
+    // Images above the section can still shift it while loading.
+    window.addEventListener('load', jump, { once: true })
+    return () => { clearTimeout(t); window.removeEventListener('load', jump) }
+  }, [])
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
-    const onScroll = () => {
-      let current = ''
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id
-      })
-      setActive(current)
-      setScrolled(window.scrollY > 8)
-    }
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
-    if (!open) return
-    const onKey = e => { if (e.key === 'Escape') setOpen(false) }
+    const onKey = e => { if (e.key === 'Escape') { setOpen(false); setMenu(null) } }
+    const onClick = e => { if (navRef.current && !navRef.current.contains(e.target)) setMenu(null) }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open])
+    document.addEventListener('click', onClick)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.removeEventListener('click', onClick)
+    }
+  }, [])
 
-  // Hash links (Features, Contact, etc.) jump to the section in place when
-  // it exists on the current page; otherwise they navigate home and land
-  // on it there — so the same links work from any page, not just "/".
-  const goToHash = (e, hash) => {
-    setOpen(false)
-    if (document.getElementById(hash)) return
-    e.preventDefault()
-    window.location.href = `/#${hash}`
-  }
-
-  const isAboutPage = window.location.pathname.startsWith('/about')
+  const close = () => { setOpen(false); setMenu(null) }
 
   return (
-    <header className={`${styles.nav} ${scrolled || open ? styles.scrolled : ''}`}>
+    <header ref={navRef} className={`${styles.nav} ${scrolled || open ? styles.scrolled : ''}`}>
       <nav className={styles.inner} aria-label="Main">
-        <a href="/#home" className={styles.logo} onClick={e => goToHash(e, 'home')}>
+        <a href="/" className={styles.logo}>
           <LogoGreen />
           <span>Supagate</span>
         </a>
 
         <ul id="main-menu" className={`${styles.links} ${open ? styles.linksOpen : ''}`}>
-          {links.map((l, i) => (
-            <li key={l.hash ?? l.href} style={{ '--i': i }}>
-              {l.href ? (
+          {items.map((item, i) => {
+            const active = item.match?.includes(current)
+            return item.menu ? (
+              <Dropdown
+                key={item.id}
+                item={item}
+                active={active}
+                open={menu === item.id}
+                onToggle={v => setMenu(v ? item.id : null)}
+                onClose={close}
+              />
+            ) : (
+              <li key={item.href} style={{ '--i': i }}>
                 <a
-                  href={l.href}
-                  className={isAboutPage ? styles.linkActive : ''}
-                  aria-current={isAboutPage ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
+                  href={item.href}
+                  className={active ? styles.linkActive : ''}
+                  aria-current={active ? 'page' : undefined}
+                  onClick={close}
                 >
-                  {l.label}
+                  {item.label}
                 </a>
-              ) : (
-                <a
-                  href={`#${l.hash}`}
-                  className={active === l.hash ? styles.linkActive : ''}
-                  onClick={e => goToHash(e, l.hash)}
-                >
-                  {l.label}
-                </a>
-              )}
-            </li>
-          ))}
-          <li className={styles.mobileCta} style={{ '--i': links.length }}>
-            <a href="#contact" className="btn btn-outline" onClick={e => goToHash(e, 'contact')}>Contact Us</a>
-            <AppLink onClick={() => setOpen(false)} />
+              </li>
+            )
+          })}
+          <li className={styles.mobileCta} style={{ '--i': items.length }}>
+            <a href={CONTACT.demo} className="btn btn-outline" onClick={close}>Book a Demo</a>
+            <AppLink onClick={close} />
           </li>
         </ul>
 
         <div className={styles.cta}>
-          <a href="#contact" className={styles.textLink} onClick={e => goToHash(e, 'contact')}>Contact Us</a>
+          <a href={CONTACT.demo} className={styles.textLink}>Book a Demo</a>
           <AppLink />
         </div>
 

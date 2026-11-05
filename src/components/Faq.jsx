@@ -4,28 +4,45 @@ import styles from './Faq.module.css'
 
 const faqs = [
   {
-    q: 'Who is Supagate for?',
-    a: 'Gated estates and residential communities. Supagate gives estate administrators, residents, and security teams each their own tailored experience inside one shared platform.',
+    q: 'What is Supagate?',
+    a: 'Supagate is a digital platform that connects residents, estate managers, security personnel and service providers to make everyday residential community living more convenient, organised and secure.',
   },
   {
-    q: 'How does visitor access work?',
-    a: 'Residents generate a one-time access code for their guest from the app. Security verifies the code at the gate, and every entry and exit is logged with a timestamp, so there is a full audit trail with no paper logbook.',
+    q: 'Who can use Supagate?',
+    a: 'Supagate is designed for residents of managed communities, estate managers, property administrators, security personnel and service providers.',
   },
   {
-    q: 'Can residents pay service charges through the app?',
-    a: 'Yes. Residents can pay dues, utility bills, and levies in-app. They get payment reminders and receipts, and administrators see collections and outstanding dues in real time.',
+    q: 'Can Supagate be used in apartment complexes and gated communities?',
+    a: 'Yes. Supagate is built for managed residential environments of different sizes, including gated estates, apartment complexes, residential developments and similar properties.',
   },
   {
-    q: 'Do we need an IT team to get set up?',
-    a: 'No. You create your estate profile, add blocks, units, and amenities, then send invite links to residents and onboard your security team. Most of it takes a few taps.',
+    q: 'Can residents manage their visitors through Supagate?',
+    a: 'Yes. Residents create digital visitor passes for their guests, and security teams use Supagate to verify visitors at the gate and record entries and exits.',
   },
   {
-    q: 'Is the app available on iOS and Android?',
-    a: 'Yes. Supagate is available on the App Store for iPhone and on Google Play for Android. Residents and security staff download the app and join their estate from an invite link.',
+    q: 'Can residents pay their estate dues through Supagate?',
+    a: 'Yes. Residents can view outstanding charges, make payments and access their transaction records, while administrators monitor collections and payment activity.',
   },
   {
-    q: 'Who can see our estate’s data?',
-    a: 'Access is role-based. Residents, security staff, and administrators only see what their role needs. Our Privacy Policy explains exactly what we collect and how it is used.',
+    q: 'Can residents report maintenance issues?',
+    a: 'Yes. Residents can report maintenance, security or community concerns, add relevant details and follow the progress of their requests, depending on the features enabled for their community.',
+  },
+  {
+    q: 'Does Supagate connect residents to service providers?',
+    a: 'Yes. Residents can discover service providers listed on Supagate, such as plumbers, electricians, cleaners and technicians, and send them service enquiries.',
+  },
+  {
+    q: 'How can my estate get started?',
+    a: 'Contact the Supagate team to arrange a demonstration and discuss onboarding for your community.',
+  },
+  {
+    q: 'How can I become a service provider on Supagate?',
+    a: 'Contact our team to ask about registration and onboarding requirements for service providers.',
+  },
+  {
+    q: 'How is my information protected?',
+    a: 'Access is role-based, so residents, security staff and administrators only see what their role needs. Our Privacy Policy explains in plain language what we collect, how it is used and how it is protected.',
+    link: { href: '/privacy-policy', label: 'Read our Privacy Policy' },
   },
 ]
 
@@ -37,7 +54,7 @@ export default function Faq() {
         <div className={styles.intro}>
           <div className="section-label">FAQs</div>
           <h2 className="section-title">Got questions?</h2>
-          <p className="section-sub">Everything you need to know about bringing your estate onto Supagate. Can’t find your answer? We’re happy to help.</p>
+          <p className="section-sub">Everything you need to know about bringing your community onto Supagate. Can’t find your answer? We’re happy to help.</p>
           <a href="mailto:hello@supagate.co" className={`btn btn-outline ${styles.contact}`}>
             <Icon name="mail" size={18} /> hello@supagate.co
           </a>
@@ -50,7 +67,10 @@ export default function Faq() {
                 <span>{f.q}</span>
                 <span className={styles.toggle}><Icon name="plus" size={18} strokeWidth={2.2} /></span>
               </summary>
-              <p>{f.a}</p>
+              <p>
+                {f.a}
+                {f.link && <> <a href={f.link.href}>{f.link.label}</a>.</>}
+              </p>
             </details>
           ))}
         </div>

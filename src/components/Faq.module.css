@@ -100,3 +100,4 @@
   .item summary { padding: 16px 18px; font-size: 1rem; }
   .item p { padding: 0 18px 20px; }
 }
+.item p a { color: var(--primary); font-weight: 600; text-underline-offset: 3px; }

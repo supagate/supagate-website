@@ -21,7 +21,7 @@ function Row({ hidden = false }) {
 export default function TrustBar() {
   return (
     <div className={styles.bar}>
-      <p className={styles.label}>Trusted by gated communities across Nigeria</p>
+      <p className={styles.label}>Communities already living better with Supagate</p>
       <div className={styles.marquee}>
         <div className={styles.track}>
           <Row />

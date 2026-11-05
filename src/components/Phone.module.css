@@ -1,7 +1,7 @@
 .frame {
   width: 270px;
-  padding: 10px;
-  border-radius: 44px;
+  padding: 5px;
+  border-radius: 30px;
   background: linear-gradient(160deg, #1d2d24 0%, #08160f 60%, #050d09 100%);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.06) inset,
@@ -11,7 +11,7 @@
 
 .screen {
   aspect-ratio: 1080 / 2340;
-  border-radius: 34px;
+  border-radius: 25px;
   overflow: hidden;
   background: #f4f7f5;
 }
